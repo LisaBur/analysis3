@@ -201,7 +201,16 @@
   \end{theorem}
 
   \begin{proof}
-
+	Seien $f$ ist $\mu$-messbar nach Satz I.16. Mit Satz IV.6 gilt: \\ 
+	$0 \leq \int f_1 d\mu \leq \int f_2 d\mu \leq ... \leq \int f d\mu \implies \lim\limits_{k\to\infty} \int f_k d\mu \leq \int f d\mu$ \\
+	Sei $\zeta$ Unterfunktion von $f$ mit Wertemenge $\{s_1, ..., s_m\}$. Setze $E_i = \{\zeta = s_i\}$ für $i=1,...,m$. \\ 
+	Betrachte für $\Theta \in (0,1)$ die Mengen $E_{i,k} = E_i \cap \{f_k \geq \Theta s_i\} $ \\
+	$\implies \sum\limits_{k=1}^m \Theta s_i \psi_{E_i,k}$ ist Unterfunktion von $f_k$ \\
+	$\overset{\text{Lemma IV.2}}{\implies} \sum\limits_{i=1}^m \Theta s_i \mu (E_{i,k}) = I(\sum\limits_{i=1}^m \Theta_i s_i \psi_{E_{i,k}})\leq \int f_k d\mu$ \\
+	Jetzt gilt: $E_i = \bigcup\limits_{k=1}^\infty E_{i,k}$, denn für $s_i > 0$ ist $\lim\limits_{k\to\infty} f_k(x) = f(x)$ $\forall x\in E_i$. \\ 
+	Außerdem: $E_{i,1} \subset E_{i,2} \subset ..." \overset{\text{Satz I.7}}{\implies} \mu (E_i) = \lim\limits_{k\to\infty}\mu (E_{i,k})\\ 
+	\implies \Theta I(\zeta) = \sum\limits_{i=1}^m \Theta s_i \mu (E_i) = \lim\limits_{k\to\infty}^m \Theta s_i \mu (E_{i,k}) \leq \lim\limits_{k\to\infty} \int f_k d\mu$ \\
+	Mit $\Theta \to 1$ und nach Bildung des Supremums über alle Unterfunktionen $\zeta$ gilt: \\ $\int f d\mu \leq \lim\limits_{k\to\infty} \int f_k d\mu$.
   \end{proof}
 
   \begin{theorem}
@@ -212,7 +221,35 @@
   \end{theorem}
 
   \begin{proof}
-    siehe Aufschrieb
+    \item[I.] $f\geq 0$, $\alpha > 0$ $\implies \int (\alpha f) d\mu = \alpha \int f d\mu$. \\
+    Sei dazu $\zeta$ Unterfunktion von $f$ $\implies \alpha \zeta$ ist Unterfunktion von $\alpha f$ und mit Lemma IV.2 folgt: $\alpha I(\zeta) = I(\alpha \zeta) \leq \int (\alpha f) d\mu$. Also: $\alpha \int f d\mu \leq \int (\alpha f) d\mu$. \\
+    Ersetze $\alpha$ durch $\frac{1}{\alpha}$ von $f$ durch $(\alpha f) \implies \alpha \int f d\mu \geq \int (\alpha f) d\mu$. 
+    \item[II.] $f$ integrierbar, $\alpha > 0$ $\implies \alpha \int f d\mu = \int (\alpha f) d\mu$. \\ Denn $(\alpha f)^\pm = \alpha f^\pm \\ \implies \int (\alpha f) d\mu = \int (\alpha f)^+ d\mu - \int (\alpha f)^- d\mu \overset{\text{I}}{=} \alpha \int f^+ d\mu - \alpha \int f^- d\mu = \alpha \int f d\mu$.
+    \item[III.] $\int (-f) d\mu = -\int f d\mu$, denn $(-f)^\pm = f^\mp \\ \implies \int (-f) d\mu = \int (-f)^+ d\mu - \int (-f)^- d\mu = \int f^- d\mu - \int f^+ d\mu = -\int f d\mu$ \\
+    \item[z.z.] Linearität für $f+g$ 
+    \item[i)]$f,g \geq 0$ \\
+    Satz IV.9 $\implies \exists \zeta_k,\Psi_k \in \script{T}^+(\mu)$ mit $\zeta_k \to f$, $\Psi_k \to g$ punktweise.$\implies \zeta_k + \Psi_k \to f+g$ \\
+    Satz IV.10 und Lemma IV.2 \\
+    $\int (f+g) d\mu = \lim\limits_{k\to\infty} \int (\zeta_k +\Psi_k ) d\mu = \lim\limits_{k\to\infty}(\int \zeta_k d\mu + \int \Psi_k d\mu) = \int f d\mu + \int g d\mu$ 
+    \item[ii)] $f,g: X\to\mathbb{R}$ integrierbar \\
+    Betrachte $\phi = f^+ + g^+ - (f+g)^+ \geq 0$, $\psi = f^- + g^- -(f+g)^- \geq 0$ \\
+    $\implies \phi-\psi = f^+ - f^- +g^+-g^--(f+g)^++(f+g)^- = f+g-(f-g) = 0 \\
+    \implies \int (f^+ + g^+) d\mu \overset{\text{i)}}{=} \int (f+g)^+ d\mu + \int \phi d\mu $ \\
+    $\implies \int (f^- + g^- )d\mu \overset{\text{i)}}{=} \int (f+g)^- d\mu + \int \psi d\mu$ \\
+    $\implies$ Beh.
+    \item[iii)] $f,g: X\to\mathbb{\bar{R}}$ \\
+    O.E. $\int f d\mu + \int g d\mu > -\infty.$ \\ 
+    Also $\int f^- d\mu + \int g^- d\mu < \infty$. \\ 
+    (Sonst gehe zu $-f$, $-g$ über und benutze den ersten Teil mit $\alpha = -1$) \\
+    Lemma IV.8 $\implies \mu(\{f=-\infty \} \cup \{g = -\infty \}) =0\implies \{(f,g) = \pm (\infty,-\infty)  \}\in \script{M}(\mu)$ ist eines $\mu$-Nullmenge. \\
+    Aus $(f+g)^- \leq f^- + g^-$ und Monotonie folgt: \\
+    $\int (f+g)^- d\mu \leq \int (f^- + g^-) d\mu \overset{\text{i)}}{=} \int f^- d\mu + \int g^- d\mu < \infty \implies \int (f+g) d\mu$ ist definiert. \\
+    Es gilt: \\
+    $(f+g)^+ - (f+g)^- = f+g = f^+ + g^+ -(f^- + g^- )$ bzw. \\
+    $(f+g)^+ + f^- +g^- = (f+g)^- +f^+ + g^+ \\
+    \overset{\text{i)}}{\implies} \int (f+g)^+ d\mu + \int f^- d\mu + \int g^- d\mu = \int (f+g)^- d\mu + \int f^+ d\mu + \int g^+ d\mu$.\\
+    Ist $\int f^+ d\mu + \int g^+ d\mu < \infty$, so sind alle Integrale endlich und \\ $\int (f+g) d\mu = \int (f+g)^+ d\mu - \int (f+g)^- d\mu = \int f^+ d\mu + \int g^+ d\mu - \int f^- d\mu - \int g^- d\mu = \int f d\mu + \int g d\mu$. \\
+    Ist $\int f^+ d\mu + \int g^+ d\mu = \infty \implies \int (f+g)^+ d\mu = \infty \\ \implies \int (f+g) d\mu = \infty = \int f d\mu + \int g d\mu$
   \end{proof}
 
   \begin{definition}
@@ -234,10 +271,19 @@
       \int\limits_{\mathbb{R}^n \setminus B_1(0)} f d\lambda^n < \infty &\Leftrightarrow \alpha > n\\
       \int\limits_{B_1(0)} f d\lambda^n < \infty &\Leftrightarrow \alpha < n
     \end{align*}
-    Beweis siehe Aufschrieb
+    Vergleiche dazu $f$ mit $g = \sum\limits_{k\in\mathbb{Z}} 2^{-k \alpha} \psi_{A_k}$, $A_k = \{2^k \leq ||\alpha|| < 2^{k+1}  \}$ \\
+    Es gilt: \\
+    $2^{-\alpha} g \leq  f \leq g$ für $\alpha > 0$ \\
+    $2^{-\alpha} g \geq f \geq g$ für $\alpha \leq 0$ \\ 
+    Monotonie $\implies$ Reicht die Aussagen für $g$ zu zeigen. \\
+    $A_k = 2^k A_0, Y_n := \lambda^n (A_0) \in (0,\infty) \\
+    \overset{\text{Satz III.16}}{\implies} \lambda^n (A_k) = (2^l) \lambda^n(A_0) = 2^{nk}Y_n\\
+    \sum\limits_{k=0}^l 2^{-k\alpha}\psi_{A_k}$ konv. punktweise auf $\mathbb{R}^n$ gegen $g\psi_{\mathbb{R}^n\setminus B_1(0)}$. Folge ist monoton wachsend. \\
+    $\overset{\text{Satz über Mon. Konvergenz}}{\implies} \int\limits_{\mathbb{R}^n\setminus B_1(0)} g d\lambda^n = \sum\limits_{k=0}^\infty \int 2^{-k\alpha}\psi_{A_k} d\lambda^n = Y_n \sum\limits_{k=0}^\infty 2^{n-\alpha)k} = \begin{cases}Y_n \frac{1}{1-2^{n-\alpha}} \text{falls } \alpha \geq n \\ \infty \text{ sonst } \end{cases}$ \\
+    Entsprechend gilt auf $B_1(0)$ \\
+    $\int\limits_{B_1(0)}g d\lambda^n = \sum\limits_{-\infty}^\infty \int 2^{-k\alpha}\psi_{A_k} d\lambda^n = Y_n \sum\limits_{k=-1}^\infty 2^{(n-\alpha)k} = \begin{cases} Y_n \frac{1}{2^{n-\alpha}-1} \text{ falls } \alpha < n \\ \infty \text{ sonst }\end{cases}$
   \end{example}
 
-  \newpage
   \sidenote{Vorlesung 13}{14.12.20}
   \begin{theorem}
     Sei $f: X \to \bar{\mathbb{R}}$ $\mu$-messbar. Dann gelten:
@@ -249,7 +295,9 @@
   \end{theorem}
 
   \begin{proof}
-    siehe Aufschrieb
+    Es gilt $|f| = f^+ + f^-$ und Satz IV.11 impliziert $\int |f| d\mu = \int (f^+ + f^-) d\mu = \int f^+ d\mu + \int f^- d\mu \implies \text{i)} $ \\
+    Ist $\int f d\mu$ definiert, so gilt $| \int f d\mu | = |\int f^+ d\mu - \int f^- d\mu | \leq \int f^+ d\mu + \int f^- d\mu = \int |f| d\mu \implies \text{ii)}$ \\
+    Sei $g$ wie in iii) $\overset{\text{Satz IV.6}}{\implies} \int |f| d\mu \leq \int g d\mu \implies f$ ist integrierbar. 
   \end{proof}
 
   \begin{example}
