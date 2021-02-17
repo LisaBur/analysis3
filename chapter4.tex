@@ -30,8 +30,17 @@
   \end{lemma}
 
   \begin{proof}
-    Sei $\zeta = \sum\limits_{i=1}^{k} s_i \script{Y_{A_i}}$ einfach $\implies \{\zeta > 0\} = \bigcup\limits_{i;s_i >0} A_i$.\newline
-    Schrift extrem unleserlich!!!
+    Sei $\zeta = \sum\limits_{i=1}^{k} s_i \psi_{A_i}$ einfach $\implies \{\zeta > 0\} = \bigcup\limits_{i;s_i >0} A_i$.\newline
+    Ist $\mu (\{ \zeta >0\}) = \infty$ $\implies s_i \mu (A_i) = \infty$ für mindestens ein $i$ und damit $I(\zeta )= \infty$. \newline
+    Sei nun $\mu(\{\zeta\}) < \infty$ und $\zeta = \sum\limits_{j=1}^l t_j \psi_{B_j}$ eine zweite einfache Darstellung. \newline
+    z.z. $\sum\limits_{i=1}^k s_i \mu (A_i) = \sum\limits_{j=1}^l t_j \mu (B_j)$ \newline
+    $\implies I$ wohldefiniert $\implies A_i\cap B_j$ sind messbar und paarweise disjunkt und es gilt \newline
+    $0 = \sum\limits_{i=1}^k s_i \psi_{A_i} - \sum\limits_{j=1}^l t_j \psi_{B_j} = \sum\limits_{i=1}^k \sum\limits_{j=1}^l (s_i - t_j )\psi_{A_i \cap B_j}$. \newline
+    Für $A_i \cap B_j \neq \varnothing \implies s_i = t_j$ \newline $ \implies \sum\limits_{i=1}^{k} s_i \mu (A_i) - \sum\limits_{j=1}^l t_j \mu (B_j) = \sum\limits_{i=1}^k \sum\limits_{j=1}^l (s_i - t_j)\mu (A_i\cap B_j)=0$ \newline
+    Sei nun $\zeta = \sum\limits_{i=1}^k s_i \psi_{A_i}$, $\Psi = \sum\limits_{j=1}^l t_j \psi_{B_j}$ einfache Darstellungen von $\zeta$,$\psi\in \script{T}^+(\mu) \\ \implies \alpha \zeta + \beta \Psi = \sum\limits_{i=1}^k \sum\limits_{j=1}^l (\alpha s_i + \beta t_j)\psi_{A_i\cap B_j}$. Das ist einfach. \newline
+    $\implies I(\alpha \zeta + \beta \Psi) = \sum\limits_{i=1}^k \sum\limits_{j=1}^l (\alpha s_i + \beta t_j) \mu (A_i \cap B_j) = \alpha I(\zeta) + \beta I(\Psi) \implies$ i) \newline
+    In ii) gilt $\Psi - \zeta \in \script{T}^+(\mu)$ und damit $I(\Psi) = I(\zeta + (\Psi - \zeta)) \overset{i)}{=} I(\zeta) + I(\Psi - \zeta) \geq I(\zeta)$
+    
   \end{proof}
 
   \begin{remark}
@@ -62,7 +71,8 @@
   \end{lemma}
 
   \begin{proof}
-    siehe Aufschrieb
+    $f$ ist Unterfunktion von $f$ $\implies \int f d\mu \geq I(f)$. \newline
+    Lemma IV.2 ii) $\implies I(\zeta) \leq I(f)$ $\forall \zeta$ Unterfunktion von f $\implies \int f d\mu \leq I(f)$.
   \end{proof}
 
   \begin{example}
@@ -81,16 +91,41 @@
     $\mu = card, X = \mathbb{N}_0$\\
     z.z.: $f: \mathbb{N}_0 \to \mathbb{R}$ ist bzgl. $card$ auf $\mathbb{N}_0$ integrierbar $\implies \sum\limits_{k \in \mathbb{N}} f(k)$ absolut konvergent\\
     Dann gilt: $\int f d card = \sum\limits_{k \in \mathbb{N}} f(k)$\\
-    Beweis siehe Aufschrieb
+    
+    i) $f: \mathbb{N}_0 \to [0,\infty]$ \\
+    Betrachte $f_n: \mathbb{N}_0 \to \mathbb{R}$, $f_n(k) = \begin{cases} f(k) \text{ ,}k\leq n \\ 0\text{ sonst } \end{cases}$ \\
+    $f_n$ sind Unterfunktionen von $f$ mit $I(f_n)=\sum\limits_{k=0}^nf(k) \\ \implies \int f dcard \geq \lim\limits_{n\to\infty} I(f_n) = \sum\limits_{k=0}^{\infty} f(k)$\\
+    Umgekehrte Abschätzung: \\
+    Dazu sei O.E. $\sum\limits_{k=0}^\infty f(k) <\infty \implies f(k)\to 0$ mit $k\to\infty$ \\
+    $\zeta$ Unterfunktion von $f$, so ist $\zeta (k) \neq 0$ nur für endlich viele $k$ und damit $\zeta \leq f_n$ für $n$ hinreichend groß. \\
+    $\implies I(\zeta)\leq I(f_n) = \sum\limits_{k=0}^n f(k)\leq \sum\limits_{k=0}^\infty f(k)$ \\
+    $\implies \int f dcard \leq \sum\limits_{k=0}^\infty f(k)$ \\
+    
+    Äquivalend von Integrierbarkeit und absolute Konvergenz: \\
+    $\inf f^+ dcard + \inf f^- dcard = \sum\limits_{k=0}^\infty f^+(k)+\sum\limits_{k=0}^\infty f^-(k) = \sum\limits_{k=0}^\infty |f(k)|$ \\
+    Und weiter \\
+    
+    ii) $f: \mathbb{N}_0 \to \mathbb{\bar{R}}$ \\
+    $\int f dcard = \inf f^+ dcard - \int f^- dcard = \sum\limits_{k=0}^\infty f^+(k) - \sum\limits_{k=0}^\infty f^-(k) = \sum\limits_{k=0}^\infty f(k)$
   \end{example}
-
+  \newpage
   \begin{theorem}
     $f,g:X \to \bar{\mathbb{R}}$ $\mu$-messbar. Ist $f \leq g$ $\mu$-fast überall und $\int f^- d\mu < \infty$, so existieren beide Integrale und es ist: $\int f d\mu \leq \int g d\mu$\\
     \glqq$\geq$\grqq gilt entsprechend wenn $f^+ d\mu < \infty$
   \end{theorem}
 
   \begin{proof}
-    siehe Aufschrieb
+    \item[i)] $f,g \geq 0$. Ist $\zeta = \sum\limits_{i=1}^k s_i \psi_{A_i}$ Unterfunktion von $f$ $\implies \Psi := \psi_{\{f \leq g \}}\zeta = \sum\limits_{i=1}^k s_i \psi_{\{f\leq g\}\cap A_i}$ Unterfunktion von g \\
+    $\implies I(\zeta) = \sum\limits_{i=1}^k s_i \mu (A_i) = \sum\limits_{i=1}^k s_i \psi(\{f \leq g\}\cap A_i) = I(\Psi) \leq \int g d\mu$ \\
+    $\implies\int f d\mu \leq \int g d\mu$ 
+    \item[ii)] $f,g$ beliebig. \\
+    Es gilt: $f^+ > 0 \implies f= f^+$ \\
+    $f^+ > g^+ \implies f = f^+ > g^+ \geq g \\
+    f^- < g^- \implies f \geq f^- > -g^- = g$ \\
+    Aus $f \leq g$ folgt $f^+ \leq g^+$ und $f^- \geq g^-$ fast überall. \\
+    $\implies \int f^+ d\mu \leq \int g^+ d\mu$, $\infty > \int f^- d\mu \geq \int g^- d\mu \\ 
+    \implies \int f d\mu = \int f^+ d\mu - \int f^- d\mu \leq \int g^+ d\mu - \int g^- d\mu = \int g d\mu$
+    
   \end{proof}
 
   \begin{remark}
@@ -101,9 +136,20 @@
   \sidenote{Vorlesung 12}{11.11.2020}
 
   \begin{remark}
-    Einschub: zum Beweis von Satz III.7
-    siehe Aufschrieb
+    Einschub: zum Beweis von Satz III.7 \\
+    $D$ $\lambda^n$-messbar \\ 
+    Schreibe $D = \bigcup\limits_{j=1}^\infty D_j$ mit $D_j = \{x\in D: j-1 \leq ||x|| < j\}$ \\
+    Lemma III.6 $\implies \exists U_{i,j}$ offen bzw. $K_{i,j}$ kompakt mit $K_{i,j}  \subset D_j \subset U_{i,j}$ und \\ $\lambda^n (U_{i,j}) < \lambda^n (D_j) + \frac{2^{-j}}{i}$, $\lambda^n (K_{i,j}) > \lambda^n (D_j) - \frac{2^{-j}}{i}$ \\
+    $\implies U_i := \bigcup\limits_{j=1}^\infty U_{i,j}$ offen und $A_i := \bigcup\limits_{j=1}^\infty K_{i,j}$ abgeschlossen.
   \end{remark}
+  \begin{example}
+  	$K_n = \{\frac{1}{n}\}$, $\bigcup\limits_{n=1}^\infty \{ \frac{1}{n}\}$ nicht abgeschlossen. \\
+  	\item[Beweis] Sei $x\in \bar{A}_i \implies \exists K\subset \mathbb{R}^n$ kompakt mit $x\in $\r{K} (z.B. $K = \overline{B_{\frac{1}{2}}(x)}$). \\
+  	$\implies \exists x_n \in A_i$ mit $x_n \to x$ O.E. $x_n \in A_i\cap K$ \\
+  	$K$ schneidet höchstens endlich viele $K_{i,j}$ \\ 
+  	endliche Vereinigung von diesen $K_{i,j}$ und $K$ ist abgeschlossen \\
+  	$\implies x\in A_i \implies A_i = \overline{A_i} \implies A_i$ abgeschlossen.
+  \end{example}
 
   \begin{lemma}[Tschebyscheff-Ungleichung]
     Für $f:X \to [0, \infty]$ $\mu$-messbar mit $\int f d\mu < \infty$ gilt:
@@ -116,7 +162,7 @@
   \end{lemma}
 
   \begin{proof}
-    siehe Aufschrieb
+    Für $s \in (0,\infty)$ ist $s \psi_{}\ f \geq s {\}}$ eine Unterfunktion von $f$ \\ $\implies s \mu (\{f = \infty\}) \leq s \mu (\{f\geq s \}) = I(s\psi_{\{f\geq s\}}) \leq \int f d\mu$
   \end{proof}
 
   \begin{lemma}
@@ -128,7 +174,8 @@
   \end{lemma}
 
   \begin{proof}
-    siehe Aufschrieb
+    \item[i)] Folgt mit $s=\infty$ aus Lemma IV.7 angewand auf $f^+$
+    \item[ii)] Lemma IV.7 $\implies \mu(\{f\geq s\})=0$ für $s>0$ $\overset{\text{Lemma II.8}}{\implies} \mu(\{f >0\})=0$
   \end{proof}
 
   \begin{theorem}
@@ -136,7 +183,13 @@
   \end{theorem}
 
   \begin{proof}
-    siehe Aufschrieb
+    Sei $c_k > 0$ eine Nullfolge mit $\sum\limits_{k=1}^\infty c_k = \infty$ (z.B. $c_k = \frac{1}{k}$) \\
+    Setze $f_0 := 0$ und definiere für $k\geq 1$ induktiv $E_k = \{f_{k-1}+c_k \leq f  \}$ sowie  \\ $f_k = f_{k-1}+c_k\psi_{E_k} \implies f_k = \sum\limits_{j=1}^k c_j\psi_{E_j}$ \\
+    $\implies f_k$ sind Treppenfunktionen mit $f_0 \leq f_1 \leq ...$ und $f_k \leq f$ $\forall$ $k\in\mathbb{N}$. Denn ist $x\in E_k$, so gilt $f_k(x) = f_{k-1}(x)+c_k \leq f(x)$ nach Definition. \\
+    Ist $x \notin E_k \implies f_k(x) = f_{k-1}(x) \leq f(x)$. \\
+    Nach Induktion $\implies \lim\limits_{j\to\infty} f_k(x) \leq f(x)$ $\forall x\in X$. \\
+    Sei $\lim\limits_{l\to\infty} < \infty $. Da $\sum\limits_{k=1}^\infty c_k = \infty$ existiert $\infty$-viele $k\in\mathbb{N}$ mit $x\notin E_k$. \\
+    $\implies f_{k-1}(x) > f(x)-c_k$  für $\infty$-viele $k$ $\implies \lim\limits_{k\to\infty}f_k(x) \geq f(x)$
   \end{proof}
 
   \newpage
@@ -148,7 +201,7 @@
   \end{theorem}
 
   \begin{proof}
-    siehe Aufschrieb
+
   \end{proof}
 
   \begin{theorem}
