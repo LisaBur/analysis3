@@ -20,7 +20,8 @@
   \end{theorem}
 
   \begin{proof}
-    siehe Aufschrieb
+    Definiere $g_k := \inf\limits_{j\geq k}f_j \implies g_{k+1} \geq g_k$ $\forall k\in\mathbb{N}$ und $\lim\limits_{k\to\infty}g_k = f$ \\
+    $\overset{\text{Satz IV.10}}{\implies} \int f d\mu = \lim\limits_{k\to\infty} \int g_k d\mu \leq \liminf\limits_{k\to\infty} \int f_k d\mu$, da $g_k \leq f_k$ $\forall k\in\mathbb{N}$
   \end{proof}
 
   \begin{theorem}[Dominierte Konvergenz bzw. Satz von Lebesgue]
@@ -29,7 +30,8 @@
   \end{theorem}
 
   \begin{proof}
-    siehe Aufschrieb
+    Folge $2g-|f-f_k| \geq 0$ konvergiert punktweise fast überall gegen $2g$. \\
+    $\overset{\text{Satz V.i}}{\implies} \limsup |\int f d\mu - \int f_k d\mu | \leq \limsup \int |f-f_k| d\mu \\ = \int 2g d\mu - \liminf \int (2g-|f-f_k|)d\mu \\ \leq 2g d\mu - \int \liminf (2g-|f-f_k|)d\mu = 0$
   \end{proof}
 
   \begin{remark}[Anwendung]
@@ -49,7 +51,15 @@
   \end{theorem}
 
   \begin{proof}
-    siehe Aufschrieb
+    Für Zerlegung $Z$ mit Teilintervallen $I_j = [x_{j-1},x_j]$, $1\leq j \leq N$.\\ Definiere Riemann-Treppenfunktion: \\ $\bar{f}_z(x) = \max\limits_{x\in I_j}\sup_{I_j} f \geq \limsup\limits_{y\to x} f(y)$, $\underline{f}_z(x) = \min\limits_{x\in I_j}\inf\limits_{I_j} f \leq \liminf\limits_{y\to x} f(y)$.  \\
+    Sei $N_f(s) = \{ x\in I: \limsup\limits_{y\to x}f(y) - \liminf\limits_{y\to x}f(y) \geq s \}$ für $s > 0$. \\
+    Sind $Z_1$, $Z_2$ bel. Zerlegungen $\implies \bar{f}_{Z_2}(x) - \underline{f}_{Z_1}(x) \geq s$ $\forall x\in N_f(s)$. \\
+    $\implies \bar{S}_{Z_2}(f) - \underline{S}_{Z_1}(f) = \int\limits_{I} (\bar{f}_{Z_2}(x)-\underline{f}_{Z_1}(x)) d\lambda^1 \geq s \lambda^1 (N_f(s))$ \\
+    Ist $f$ Riemann-integrierbar, so bilde Infimum über alle $Z_1$, $Z_2$ und schließe $\lambda^1 (N_f(s))=0$ $\forall s>0$ $\implies$ "$\implies$". \\
+    Sei nun $f$ $\lambda^1$-fast überall stetig und $Z_i$ Folge von Zerlegungen mit Feinheit \\ $\delta_i := \max\limits_{1\leq j \leq N_i} |x_{i,j}-x_{i,j-1}| \to 0$ \\
+    Ist $f$ stetig in $x$, so folgt $\bar{f}_{Z_i} (x) \geq \inf\limits_{|y-x| \leq \delta_i } f(y) \to f(x)$ und $\underline{f}_{Z_i} (x) \geq \inf\limits_{|y-x| \leq \delta_i } f(y) \to f(x)$ mit $i\to\infty$ $\implies \bar{f}_{Z_i}$, $\underline{f}_{Z_i}$ konvergiert punktweise $\lambda^1$-fast überall gegen $f$ $\implies f$ ist $\lambda^1$-messbar nach Kapitel I. \\
+    Aus $|\bar{f}_{Z_i}|$, $|\underline{f}_{Z_i}| \leq \sup\limits_{I} |f| < \infty$ folgt aus Satz V.2 $\bar{S}_{Z_i}(f) = \int\limits_{I} \bar{f}_{Z_i} d\lambda^1 \to \int\limits_{I} f d\lambda^1$, \\
+    $\underline{S}_{Z_i}(f) = \int\limits_{I} \underline{f}_{Z_i} d\lambda^1 \to \int\limits_{I} f d\lambda^1 \implies f$ ist Riemannint. mit $\int\limits_{a}^b f(x) dx = \int\limits_{I} f d\lambda^1$.
   \end{proof}
 
   \begin{theorem}
@@ -60,7 +70,9 @@
   \end{theorem}
 
   \begin{proof}
-    siehe Aufschrieb
+    Sei $\alpha_k \to x_0$ Folge $\implies \exists \mu$-Nullmenge $N$, so dass $\forall y\in y\setminus N$ gilt: \\
+    $f(x_k,y) \to f(x_0,y)$ und $|f(x_k,y)| \leq g(y)$ $\forall k\in\mathbb{N}$. \\
+    $\overset{\text{Satz V.2}}{\implies} F(x_0) = \int f(x_0,y) d\mu(y) = \lim\limits_{k\to\infty} \int f(x_k,y) d\mu(y) = \lim\limits_{k\to\infty} F(x_k)$.
   \end{proof}
 
    \sidenote{Vorlesung 14}{18.12.20}
@@ -78,7 +90,10 @@
     \end{align*}
   \end{theorem}
   \begin{proof}
-    siehe Aufschrieb
+    Zu jeder Folge $x_k \to x_0$ existiert $\mu$-Nullmenge $N\subset Y$, sodass $\forall y\in Y\setminus N$ gilt: \\
+    $$\lim\limits_{k\to\infty} \frac{f(x_k,y)-f(x_0,y)}{x_k-x_0} = \frac{\partial f}{\partial_x}(x_0,y)$$ \\
+    $$\frac{|f(x_k,y)-f(x_0,y)|}{|x_k-x_0|} \leq g(y)$$ 
+    $$\overset{\text{Satz V.2}}{\implies} \frac{F(x_k)-F(x_0)}{x_k-x_0} = \int \frac{f(x_k,y)-f(x_0,y)}{x_k-x_0} d\mu(y) \to \int \frac{\partial f}{\partial x}(x_o,y) d\mu(y)$$
   \end{proof}
 
   \newpage
@@ -96,7 +111,10 @@
   \end{lemma}
 
   \begin{proof}
-    siehe Aufschrieb
+    Nach Vor. gilt $\forall y\in Y$ mit Ausnahme einer $\mu$-Nullmenge $N$: \\
+    $$ \frac{|f(x+hc_i, y)-f(x,y)|}{h} \leq \int\limits_{0}^1 \left| \frac{\partial f}{\partial x_i} (x+tc_i,y) \right|  dt \leq g(y) $$
+    Satz V.5 $\implies$ $F$ ist in allen $x\in \script{U}$ nach $x_i$ partiell differenzierbar mit gewünschten Ableitung. \\
+    Satz V.4 $\implies$ partielle Ableitungen sind stetig auf U $\implies F\in C^1(\script{U})$. 
   \end{proof}
 
   \begin{example}
@@ -113,13 +131,16 @@
             &= -1 - t^2 F'(t)
     \end{align*}
     $\implies F'(t) = \dfrac{-1}{1+t^2}$\\
-    \newline
-    ... (siehe Aufschrieb)\\
-    \newline
-    $\int\limits_0^{\infty} \dfrac{\sin(x)}{x} dx = \dfrac{\pi}{2}$
+    Weiter ist $\lim\limits_{t\to\infty} f(t,x) = 0$ $\forall x>0$ mit Majorante $\text{e}^{-x}$  \\
+    Satz V.2 $\implies \lim\limits_{t\to\infty} F(t) = 0 \implies F(t) = \frac{\pi}{2}-\arctan{t}$ $\forall t>0$. \\
+    Für $t>0$ und $0<r<R<\infty$ gilt mit $\sin{x} = \text{Im}(\text{e}^{ix})$: \\
+    $ \int\limits_r^R \text{e}^{-tx} \frac{\sin{x}}{x}dx = \text{Im}$ $\int\limits_r^R \text{e}^{(i-t)x}\frac{dx}{x} = \text{Im}$ $\frac{\text{e}^{(i-t)x}}{(i-t)x} |_{x=r}^{x=R} + \text{Im}$ $\int\limits_r^R \frac{\text{e}^{(i-t)x}}{(i-t)}\frac{dx}{x^2}$ \\
+    Mit $R\to\infty$ sehen wir im Fall $t=0$ die Existenz von $F(0) = \lim\limits_{k\to\infty}\int\limits_0^R \frac{\sin{x}}{x}dx$. Weiter folgt für $t\geq 0$ die Abschätzung $\left| \int\limits_r^\infty \text{e}^{-tx} \frac{\sin{x}}{x}dx \right| \leq \frac{2}{r}$ (denn $|i-t|\geq 1$). Somit folgt $\left| F(0) - F(t) \right| \leq \left| \int\limits_0^r (1-\text{e}^{-tx}) \frac{\sin{x}}{x} dx \right| + \frac{4}{r}$. \\
+    Satz V.2 $\implies \limsup\limits_{t\to 0} \left| F(0)-F(t)\right| \leq \frac{4}{r}$. \\
+    Mit $r\to\infty$ folgt 
+    $$\int\limits_0^{\infty} \dfrac{\sin(x)}{x} dx = F(0) = \lim\limits_{t\to 0}F(t) = \lim\limits_{t\to 0} \left( \dfrac{\pi}{2}-\arctan{t} \right) = \dfrac{\pi}{2}$$
   \end{example}
 
-  \newpage
   \begin{definition}[$L^p$-Norm]
     Für $\mu$-messbares $f: X \to \bar{\mathbb{R}}$ und $1 \leq p \leq \infty$ setzen wir
     \begin{align*}
@@ -150,7 +171,15 @@
   \end{proposition}
 
   \begin{proof}
-    siehe Aufschrieb
+    Sei $1 \leq p >\infty \implies ||f||_{L^p}$ ist wohldefiniert nach Satz IV.6. \\
+    1. folgt aus Lemma IV.8 \\
+    2. folgt aus Linearität des Integralt. \\
+    $t \mapsto t^p$ ist konvex auf $[0,\infty) \implies |f+g|^p = 2^p \left| \frac{f+g}{2}\right| ^p \leq 2^{p-1} (|f|^p + |g|^p) \implies$ Aus $f,g \in L^p(\mu)$ folgt $f+g\in L^p(\mu)$. \\
+    $\Delta$-Ungleichung folgt später. \\
+    \item[$p=\infty$:] 
+    \item[1)] ist klar
+    \item[2)] O.E. $\lambda >0 \rightarrow \{|\lambda f| > \lambda s\} = \{|f| > s \}$
+    \item[3)] $\{|f+g| > s_1+s_2 \}\subset \{|f|>s_1 \}\cup \{|g|>s_2 \}$
   \end{proof}
 
   \begin{lemma}[Youngsche Ungleichung]
@@ -158,17 +187,19 @@
   \end{lemma}
 
   \begin{proof}
-    siehe Aufschrieb
+    Sei $y\geq 0$ fest und $f(x) = \frac{1}{p}x^p +\frac{1}{q}y^q -xy \implies f'(x) = \alpha^{p-1}-y \begin{cases} <0 \text{ für } x<y^{\frac{1}{p-1}} \\ > 0 \text{ für } x>y^{\frac{1}{p-1}}\end{cases} $ \\
+    $\implies \forall x\geq 0$: $f(x) \geq f(y^{\frac{1}{p-1}}) = \frac{1}{p} y^{\frac{p}{p-1}}+\frac{1}{q} y^{\frac{p}{p-1}} - y^{\frac{p}{p-1}} = 0$
   \end{proof}
 
-  \newpage
   \begin{theorem}[Höldersche Ungleichung]
     Für $\mu$-messbare $f,g: X \to \bar{\mathbb{R}}$ gilt: \ \ $|\int fg d\mu| \leq ||f||_{L^p} ||g||_{L^p}$,\\
     falls $1 \leq p,q \leq \infty$ mit $\dfrac{1}{p} + \dfrac{1}{q} = 1$
   \end{theorem}
 
   \begin{proof}
-    siehe Aufschrieb
+    O.E. $f,g \geq 0$ und $||f||_{L^p} = ||g||_{L^q} = 1$ (sonst $\tilde{f} = \dfrac{f}{||f||_{L^p}}$, $\tilde{g} = \dfrac{g}{||g||_{L^q}}$) \\
+    Lemma V.10 $\implies \int fg d\mu \leq \int \left(\frac{f^p}{p}+\frac{g^q}{q} \right)d\mu = 1 = ||f||_{L^p} ||g||_{L^q} \\ \implies$ Beh. für $1 < p,q < \infty$. \\
+    Fall $p=1, q =\infty$ folgt sofort aus Satz IV.6.
   \end{proof}
 
   \begin{theorem}[Minkowski-Ungleichung]
@@ -176,7 +207,7 @@
   \end{theorem}
 
   \begin{proof}
-    siehe Aufschrieb
+    $$ ||f+g||^p_{L^p}$$ $$= \int |f+g|^p d\mu \leq |f| |f+g|^{p-1} d\mu + \int |g| |f+g|^{p-1}d\mu$$ $$\leq ||f||_{L^p}||f+g||_{L^p}^{p-1} + ||g||_{L^p}||f+g||_{L^p}^{p-1}$$ $$ \overset{\text{Kürzen}}{\implies} ||f+g||_{L^p} \leq ||f||_{L^p} + ||g||_{L^p}$$
   \end{proof}
 
   \begin{lemma}
@@ -189,7 +220,12 @@
   \end{lemma}
 
   \begin{proof}
-    siehe Aufschrieb
+    Betrachte $g_k := \sum\limits_{j=1}^k |u_j|$, $g:= \sum\limits_{j=1}^\infty |u_j|$ \\
+    Es gilt: $g_1 \leq g_2 \leq ...$ und $g_k(x) \to g(x) \in [0,\infty]$ mit $k\to\infty$ $\forall x\in X$ \\
+    Satz IV.10 $\implies ||g||_{L^p} = \lim\limits_{k\to\infty} ||g_k||_{L^p} \overset{\text{Satz V.12}}{\leq} \sum\limits_{j=1}^\infty ||u_j||_{L^p} < \infty$ \\
+    Lemma IV.8 $\implies N:=\{g=\infty \}$ ist $\mu$-Nullmenge. \\ Für $x\in X\setminus N$ ist $\sum\limits_{j=1}^\infty u_j(x)$ absolut konvergent.$\implies (f_k(x))$ ist Cauchy-Folge in $\mathbb{R} \\
+    \implies f(x) = \lim\limits_{k\to\infty} f_k(x)$ existiert $\forall x\in X\setminus N$. \\ Weiter ist $|f_k|^p \leq |g|^p \in L^1(\mu)$, sowie $|f-f_k|^p \leq 2^{p-1}(|f|^p+|f_k|^p) \leq 2^p g^p$ \\
+    Satz V.2 $\implies f\in L^p(\mu)$ und $||f-f_k||_{L^p} \to 0$
   \end{proof}
 
   \sidenote{Vorlesung 15}{21.12.20}
