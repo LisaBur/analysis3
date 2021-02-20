@@ -35,14 +35,39 @@
     $\alpha \times \beta$ ist ein äußeres Maß
   \end{lemma}
   \begin{proof}
-    siehe Aufschrieb
+    \item[$\cdot$] $\alpha \times \beta (\varnothing) \leq \alpha (\varnothing) \beta (\varnothing) = 0$ 
+	\item[$\cdot$] Sei $E\subset \bigcup\limits_{i=1}^\infty E_i$ mit $E, E_i \subset X\times Y$. Wähle zu $\epsilon >0$ Überdeckungen $E_i \subset \bigcup\limits_{j=1}^\infty A_{i,j}\times B_{i,j}$ wie in $(\ast)$, sodass $\sum\limits_{j=1}^\infty \alpha (A_{i,k}) \beta(B_{i,j}) < \alpha \times \beta (E_i) + 2^{-i} \epsilon$ \\
+	$\implies E\subset \bigcup\limits_{i,j=1}^\infty A_{i,j}\times B_{i,j}$\\
+	$\implies \alpha \times \beta (E) \leq \sum\limits_{i,j=1}^\infty \alpha(A_{i,j})\beta(B_{i,j}) < \sum\limits_{i=1}^\infty \alpha \times \beta (E_i)+\epsilon$
   \end{proof}
 
   \begin{lemma}
     Sei $P = A \times B$. Eine Produktmenge, d.h. $A,B$ sind messbar bzgl. $\alpha$ bzw. $\beta$. Dann gilt $\alpha \times \beta(P) = \alpha(A) \beta(B)$ und $P$ ist $\alpha \times \beta$-messbar.
   \end{lemma}
+
   \begin{proof}
-    siehe Aufschrieb
+	$A,B$ messbar $\implies alpha\times\beta(P)\overset{(\ast)}{\leq}\alpha(A)\beta(B)$\\
+	\item[]\underline{z.z:} $\alpha (A) \beta(B) \leq \alpha\times\beta(P)$\\
+	Der $y$-Schnitt von $P$ ist $P_y = \{x\in X: (x,y) \in P \} = \begin{cases} A \text{, für } y\in B \\
+	\varnothing \text{ sonst } \end{cases}$ \\
+	Ist $P \subset \bigcup\limits_{j=1}^\infty P_j$ mit $P_j = A_j\times B_j$, so folgt $P_y \subset \bigcup\limits_{j=1}^\infty (P_j)_y$ und mit Fatou \\ $\alpha(A)\beta(B) = \int\limits_y \alpha(P_y) d\beta(y) \leq \int\limits_y \sum\limits_{j=1}^\infty \alpha((P_j)_y) d\beta(y) = \sum\limits_{j=1}^\infty \int\limits_y \alpha((P_j)_y) d\beta(y) = \sum\limits_{j=1}^\infty \alpha(A_j)\beta(B_j)$ \\
+	$\implies \alpha(A)\beta(B) \leq \alpha\times\beta(P)$\\
+	\item[]Messbarkeit: \\
+	Sei $S\subset\bigcup\limits_{j=1}^\infty P_k$ mit $P_j = A_j\times B_j$ wie in $(\ast)$. \\
+	Es gilt: 
+	\begin{align*}
+		(\ast\ast) && P_j \cap P = (A_j \cap A) \times (B_j \cap B) && P_j\setminus P = (A_j\cap A) \times (B_j\setminus B) \cup (A_j\setmiinus A) \times B_j 
+	\end{align*}
+	$\implies$ 
+	\begin{equation*}
+		\begin{split}
+		\alpha\times\beta(P_j\cap P) + \alpha\times\beta (P_j\setminus P) &\leq \alpha(A_j \cap A) \beta(B_j\cap B) + \alpha(A_j\cap A)\beta(B_j\setminus B) + \alpha(A_j\setminus A) \beta(B_j) \\
+	&= \alpha(A_j\cap A) \beta(B_j) + \alpha(A_j\setminus A)\beta(B_j) \\
+	&= \alpha(A_j) \beta(B_j)
+	\end{split}
+	\end{equation*}
+	$\implies \alpha\times\beta(S\cap P) + \alpha\times\beta(S\setminus P) \leq \sum\limits_{j=1}^\infty \alpha\times\beta(P_j\cap P) + \sum\limits_{j=1}^\infty \alpha\times\beta (P_j \setminus P) \leq \sum\limits_{j=1}^\infty \alpha(A_j)\beta(B_j)$\\
+	$\overset{(\ast)}{\implies} \alpha\times\beta(S\cap P) + \alpha\times\beta(S\setminus P) \leq \alpha\times\beta(S)$
   \end{proof}
 
   \begin{theorem}[Cavalierisches Prinzip]

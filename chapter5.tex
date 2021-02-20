@@ -233,8 +233,22 @@
   \begin{theorem}[Satz von Riesz-Fischer]
     $(L^p(\mu), ||\cdot||_{L^p})$ ist vollständig, also ein Banachraum. $(1 \leq p \leq \infty)$
   \end{theorem}
+
   \begin{proof}
-    siehe Aufschrieb
+    Sei $f_k \in L^p(\mu)$ Cauchyfolge bzgl $||\cdot ||_{L^p}$. \\
+    Es reicht zu zeigen: $\exists$ Teilfolge, welche in $L^p(\mu)$ konvergiert.
+    \item[1)] $1 \leq p < \infty$: \\
+    Nach Wahl einer Teilfolge sei $||f_{k+1}-f_k||_{L^p} \leq 2^{-k}$ $\forall k\in\mathbb{N}$. \\
+    Mit $f_0 := 0 \implies f_k = \sum\limits_{j=1}^k u_k$ mit $u_j = f_j - f_{j-1}$. \\
+    Lemma V.13 $\implies$ $f_k$ konvergiert in $L^p(\mu)$ bzw. punktweise $\mu$-fast überall gegen $f\in L^p(\mu) \implies$ Beh.
+    \item[2)] $p = \infty$ \\
+    Wegen $\left| ||f_k||_{L^\infty} - ||f_l||_{L^\infty} \right| \leq ||f_k - f_k||_{L^\infty}$ existiert $\lim\limits_{k\to\infty} ||f_k||_{L^\infty}$. \\
+    Die Mengen $N_k = \{|f_k| > ||f_k||_{L^\infty}  \}$ sowie $N_{k,l} = \{|f_k-f_l| > ||f_k-f_l||_{L^\infty} \}$ haben $\mu$-Maß Null $\implies N = \bigcup\limits_{k=1}^\infty N_k \cup \bigcup\limits_{k,l=1}^\infty N_{k,l}$ ist $\mu$-Nullmenge. \\
+    Für $x\in X\setminus N$ gilt: $|f_k(x)-f_l(x)|\leq ||f_k-f_l||_{L^\infty} < \epsilon$ für $k,l \geq k(\epsilon) \\ 
+    \implies f(x) = \lim\limits_{k\to\infty} f_k(x)$ ist definiert $\forall x\in X\setminus N$. \\
+    Weiter gilt für $x\in X\setminus N$:\\
+    $|f(x)| = \lim\limits_{k\to\infty}|f_k(x)| \leq \lim\limits_{k\to\infty} ||f_k||_{L^\infty}$ und $|f_k(x) - f(x)| = \lim\limits_{l\to\infty} |f_k(x)-f_l(x)| \leq \lim\limits_{l\to\infty} ||f_k-f_l||_{L^\infty} \leq \epsilon$ für $k\geq k(\epsilon)$ \\
+    $\implies ||f||_{L^\infty} \leq \lim\limits_{k\to\infty} ||f_k||_{L^\infty} < \epsilon$ und $||f_k-f||_{L^\infty} \to 0$ mit $k\to\infty$.
   \end{proof}
 
   \begin{lemma}
@@ -277,20 +291,60 @@
   \begin{theorem}
     Sei $\Omega \subseteq \mathbb{R}^n$ offen und $1 \leq p < \infty$. Dann existiert zu jedem $f \in C^p(\Omega)$ eine Folge $f_k \in C_c^0(\Omega)$ mit $|| f_k - f||_{L^p(\Omega)} \to 0$ mit $k \to \infty$.
   \end{theorem}
+
   \begin{proof}
-    siehe Aufschrieb
+    \item[1)] $f=\psi_E$ mit $E\subset \Omega$ messbar mit $\lambda^n(E) < \infty$\\
+    Sei $\epsilon >0$. Lemma III.6 $\implies$ $\exists K\subset E$ kompakt mit $\lambda^n(E\setminus K) < \frac{\epsilon}{2}$ \\
+    Setze $f_\rho: \Omega \to [0,1]$, $f_\rho (x) = \left( 1-\frac{dist(x,K)}{\rho}\right) ^+ \\ 
+    \overset{\text{1),2)}}{\implies} f_\rho \in C^0(\Omega)$, $spt f_\rho = \{x: dist(x,K)\leq \rho \}$ ist kompakte Teilmenge von $\Omega$ für $\rho$ hinreichend klein. $\implies f_\rho \in C^0_c (\Omega)$ für $\rho << 1$ und $f_\rho = f$ auf $K$. \\
+    $$\implies \int\limits_{\Omega} |f_\rho -f |^p d\lambda^n \leq 2^{p-1} \int\limits_{\Omega\setminus K} (|f_\rho)|^p + |f|^p d\lambda^n$$
+    $$ \leq 2^{p-1} (\lambda^n (\{ 0< dist(\cdot, K)\leq \rho\}) + \lambda^n(E\setminus K))$$ 
+    $$ < 2^{p-1}\epsilon \text{ für } \rho \text{ hinreichend klein }$$ 
+    $\implies$ Beh. 
+    \item[2)] $f$ beliebig, $f\in L^p(\Omega)$ \\
+    O.E. $f \geq 0$ sonst betrachte $f^+$ und $f^-$. \\
+    Nach Satz IV.9 existiert Folge von Treppenfunktionen $f_1 \leq f_2 \leq ...$ mit \\ $\lim\limits_{k\to\infty} f_k(x) = f(x)$ $\forall x\in \Omega$. \\
+    Satz V.2 $\implies f_k \to f$ in $L^p(\Omega)$. \\
+    Verwende dazu Majorante $|f-f_k|^p \leq 2^{p-1}(|f|^p+|f_k|^p) \leq 2^p |f|^p \in L^p(\Omega)$. \\
+    Für die Treppenfunktion $f_k$ gilt nach Lemma IV.7
+    $$ \lambda^n (\{f_k \geq s \}) \leq \frac{1}{s^p} \int\limits_\Omega |f_k|^p d\lambda^n \leq \frac{1}{s^p} \int\limits_\Omega |f|^p d\lambda^n < \infty$$ 
+    Da $f_k$ endliche Linearkombination von charakteristischen Funktionen ist, folgt die Behauptung. 
   \end{proof}
 
   \begin{remark}
-    $BC^0(\Omega)$ bezeichnet die Menge der beschränkten, stetigen Funktionen auf $\Omega$. Mit Supremumsnorm $||\cdot||_{sup}$ ist diese ein Banachraum.\\
-    ... (Rest siehe Aufschrieb)
+    $BC^0(\Omega)$ bezeichnet die Menge der beschränkten, stetigen Funktionen auf $\Omega$. Mit Supremumsnorm $||\cdot||_{\sup}$ ist diese ein Banachraum. Für $f\in  BC^0(\Omega)$ gilt \\
+    $$\{ |f|>s \} \neq \varnothing \Leftrightarrow \lambda^n(\{ |f|>s \}) > 0$$
+    $\implies ||f||_{L^\infty} = ||f||_{\sup}$ $\forall f\in BC^0(\Omega)$. \\
+    Angenommen $f\in L^\infty(\Omega)$ kann durch $f_k \in BC^0(\Omega)$ bzgl der $L^\infty$-Norm approximiert werden, dann wäre $f_k$ eine Cauchyfolge bzgl $\sup$-Norm \\
+    $\implies \exists \tilde{f} \in BC^0(\Omega)$ mit $f_k\to \tilde{f}=f$ fast überall, aber $L^\infty$-Funktion ohne stetigen Repräsentanten.
+    \item[] \underline{Fourier-Reihen:} \\
+    Betrachte Funktionen $f\in L^2(I,\mathbb{C})$ mit $I =(-\pi, \pi) \Leftrightarrow \text{Re}(f)$, $\text{Im}(f) \in L^2(I)$ \\
+    Satz V.14 $\implies L^2(I,\mathbb{C})$ ist vollständig bzgl $L^2$-Norm. Also ein Hilbertraum mit dem hermitischen Skalarprodukt $$<f,g>_{L^2} = \int\limits_{-\pi}^\pi f(x) \overline{g(x)}dx$$
+    $w_k (x) = \frac{1}{\sqrt{2\pi}} \text{e}^{ikx}$, $k\in\mathbb{Z}$ bilden ein Orthonormalsystem und spannen den Raum $\mathbb{P}$ der Trigonometrischen Polynome auf. \\
+    Das $n$-te Fourierpolynom $f_n$ ist definiert als die Orthonormalprojektion von $f$ auf den Raum $\mathbb{P}^n$ der trigonometrischen Polynome von Grad $\leq n$. , Also\\
+    $$ f_n = \sum\limits_{k=-n}^n <f,w_k>_{L^2} w_k = \sum\limits_{k=-n}^n \hat{f}(k) \text{e}^{ik}$$
+    $\hat{f}(k) = \frac{1}{\sqrt{2\pi}} <f,w_k>_{L^2} = \frac{1}{2\pi} \int\limits_{-\pi}^\pi f(x) \text{e}^{-ikx} dx$. Die Folge $f_n$ heißt Fourier-Reihe von $f$. \\
+    Wegen $f-f_n \perp_{L^2} \mathbb{P}_n$ gilt $\forall p\in \mathbb{P}_n$ : \\
+    \begin{align*}
+    (\ast) & & |f-p||_{L^2}^2 = ||(f-f_n)+(f_n-p) ||_{L^2}^2 = ||f-f_n||_{L^2}^2 + ||f_n-p||_{L^2}^2
+    \end{align*}
+	Mit $p = 0$ folgt die Besselsche Ungleichung 
+	\begin{align*}
+	(\ast\ast) & & 2\pi \sum\limits_{k=-n}^n |\hat{f}(k)|^2 = ||f_n||^2_{L^2} \overset{(\ast)}{\leq} ||f||_{L^2}^2 & &  \forall n\in\mathbb{N}_0
+	\end{align*}
+	$\implies f_n$ ist eine $L^2$-Cauchyfolge, denn für $m\geq n$ folgt \\  $||f_m-f_n||^2_{L^2} = 2\pi \sum\limits_{k=n+1}^m |\hat{f}(k) |^2 + 2\pi \sum\limits_{k=-m}^{-(n+1)} |\hat{f}(k)|^2 < \epsilon$ für $n$ groß genug. \\
+	$\overset{\text{Riesz-Fischer (Satz V.14)}}{\implies} f_n$ konvergiert in $L^2(I,\mathbb{C})$ gegen  eine Funktion $\in L^2(I, \mathbb{C})$. \\
+	Frage: Konvergiert $f_n$ gegen $f$?
+	
   \end{remark}
 
   \begin{theorem}
     Für $f \in L^2(I, \mathbb{C})$ konvergiert $f_n$ gegen $f$ in $L^2(I, \mathbb{C})$? (bezieht sich auf Bem. vorher)
   \end{theorem}
   \begin{proof}
-    siehe Aufschrieb
+    Wegen $(\ast)$ gilt $$ ||f-f_n||_{L^2} = \min\limits_{p\in\mathbb{P}_n} ||f-p||_{L^2}$$
+    \item[]\underline{z.z.} $\mathbb{P}$ liegt dicht in $L^2(I,\mathbb{C})$ \\
+    Satz V.17 $\implies C_c^0(I,\mathbb{C})$ dicht in $L^2(I,\mathbb{C})$ und jede stetige Funktion kann gleichmäßig und damit auch in $L^2$ durch stückweise konstante Funktionen approximiert werden. Für $f$ stückweise $C^1$ haben wir in Analysis II gezeigt: $f_n \to f$ gleichmäßig, also auch in $L^2$. 
   \end{proof}
 
   \begin{remark}
@@ -298,12 +352,14 @@
     $\ell^2(\mathbb{C})$ ist vollständig (folgt aus Riesz-Fischer angewandt auf das Zählmaß auf $\mathbb{Z}$)
   \end{remark}
 
-  \newpage
   \begin{lemma}
     Die Abbildung $\script{F}: (L^2(I, \mathbb{C}), ||\cdot||_{L^2}) \to (\ell^2(\mathbb{C}), ||\cdot||_{\ell^2}), \script{F}(f) = (\hat{f}(k))_{k \in \mathbb{Z}}$ ist eine Isometrie von Hilberträumen.
   \end{lemma}
+
   \begin{proof}
-    siehe Aufschrieb
+    Aus Satz V.18 folgt mit $p=0$ in $(\ast)$: $$  ||\script{F}(f)||_{l^2}^2 = 2\pi \sum\limits_{k=-\infty}^\infty |\hat{f}(k)|^2 = \lim\limits_{n\to\infty} ||f_n||_{L^2}^2 \overset{(\ast)}{=} \lim\limits_{n\to\infty} \left( ||f||_{L^2}^2 - ||f-f_n||^2_{L^2}\right) = ||f||_{L^2}^2$$ 
+    $\implies \script{F}$ ist isometrisch und damit injektiv. \\
+    Für $c\in l^2(\mathbb{C})$ ist $f_n = \sum\limits_{k=-n}^n c_k \text{e}^{-ikx}$ eine Cauchyfolge in $L^2(I,\mathbb{C})$ und konvergiert nach Riesz-Fischer gegen $f\in L^2(I,\mathbb{C}) \implies \script{F}(f) = c \implies \script{F}$ ist surjektiv. 
   \end{proof}
 
   \begin{remark}
@@ -330,7 +386,27 @@
     Im Fall $p = 1$ heißt eine Folge mit 1) und 2) \textbf{gleichgradig integrierbar}.
   \end{theorem}
   \begin{proof}
-    siehe Aufschrieb
+    \item[] \underline{a) $\implies$ b):} \\
+    Sei $f_n \to f$ in $L^p(\mu)$. FÜr $A$ messbar gilt: 
+    $$ \left| ||f_n||_{L^p(A)} - ||f||_{L^p(A)} \right| \leq ||f_n-f||_{L^p(A)} \leq ||f_n-f||_{L^p} \to 0$$ 
+    $\implies \lim\limits_{n\to\infty} ||f_n||_{L^p(A)} = ||f||_{L^p(A)}$ und damit $\lambda(A) = \int\limits_{A}|f|^p d\mu$ \\
+    1) gilt dann nach Blatt 6, Aufgabe 2,3 \\
+    (3) $\implies \lambda$ äußeres Maß, 2) $\implies$ Beh 1) \\
+    Weiter ist mit Lemma IV.7 $\mu(E_\delta) \leq \frac{1}{\delta}\int |f|^p d\mu < \infty \text{für } E_\rho = \{ |f|^p \geq \delta \} $ \\
+    $\implies \psi_{X\setminus E_\delta} |f|^p \leq \delta \to 0$ mit $\delta \to 0$, wobei $|f|^p$ integrierbare Majorante ist $\implies \lambda(X\setminus E_j) = \int\limits_{X\setminus E_j} |f|^p d\mu < \epsilon$ für $\delta$ klein genug. 
+    \item[]\underline{b)$\implies$ a):}\\
+    Zu $\epsilon > 0$ wähle $E$ wie in 2) sowie $\delta >0$ wie in 1). Da $\mu(E) < \infty$ existiert nach Egorov, Satz I.21 $A\subset E$ messbar mit $\mu(E\setminus A) < \delta$, sodass $f_n \to f$ gleichmäßig auf $A$. \\
+    Hier wenden wir Satz I.21 auf das Maß $\mu_E = \mu|_{\script{D}(E)}$ an. 
+	Die Menge $A$ ist dann $\mu_E$-messbar und damit auch $\mu$-messbar, denn $S \subset X$ und $E \mu$-messbar: 
+	\begin{equation*}
+	 \begin{split} \mu(S) &\geq \mu(S\cap E) + \mu(S\setminus E) \\
+	 &\geq \mu(S\cap A) + \mu (S\cap E \setminus A) + \mu(S\setminus E) \\
+	 &\geq \mu(S\cap A) + \mu(S\setminus A)
+	 \end{split}
+	\end{equation*}
+	Nun gilt $|f_n -f|^p \leq \psi_A |f_n-f|^p + (\psi_{X\setminus E}+\psi_{E\setminus A}) 2^{p-1}(|f|^p+|f_n|^p)$ \\
+	Lemma von Fatou impliziert für $B$ messbar $$\int\limits_B |f|^p d\mu \leq \liminf\limits_{n\to\infty} \int\limits_B |f_n|^p d\mu \leq \lambda(B)$$
+	Mit $n\to\infty$ folgt aus 2) und 1) $$\limsup \int |f_n-f|^p d\mu \leq 2^p (\lambda(x\setminus E)+\lambda (E\setminus A)) < 2^{p+1}\epsilon$$
   \end{proof}
 
   
