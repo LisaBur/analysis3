@@ -78,7 +78,43 @@
   \end{theorem}
   \sidenote{Vorlesung 17}{11.01.21}
   \begin{proof}
-    siehe Aufschrieb
+    \item[I] \underline{$(\alpha\times\beta)(D) < \infty$} \\
+    Nach $(\ast)$ und Lemma VI.3 existiert zu $r\in\mathbb{N}$ eien Überdeckung $E^r = \bigcup\limits_{i=1}^\infty P_i^r$ von $D$ mit Produktmenge $P_i^r$, sodass 
+   	$\sum\limits_{i=1}^\infty \alpha\times \beta (P_i^r) < \alpha\times\beta(D) + \frac{1}{r}$
+   	\begin{itemize} 
+   	\item[a)] $P_i^r$, $i\in\mathbb{N}$, sind disjunkt, sonst betrachte induktiv $P^r\setminus \bigcup\limits_{j=1}^{i-1}P_j^r$. Nach $(\ast\ast)$ ist dies eine disjunkte Vereinigung von Produktmengen.
+   	\item[b)] $E^r\subset E^{r-1}$ $\forall r$, sonst gehe über zur disjunkten Überdeckung $P^r_i \cap P_j^{r-1}$ mit $i,j\in\mathbb{N}$. Nach $(\ast\ast)$ sind dies Produktmengen und \\
+   	$\sum\limits_{i,j=1}^\infty \alpha\times\beta (P_i^r\cap P_j^{r=1}) = \sum\limits_{i=1}^\infty \alpha\times\beta(\bigcup\limits_{j=1}^\infty P_i^r\cap P_j^{r-1}) \leq \sum\limits_{i=1}^\infty\alpha\times\beta (P_i^r)<\alpha\times\beta (D) + \frac{1}{r}$ Mit $E:=\bigcap\limits_{r=1}^\infty E^r$ folgt: $D\subset \bigcap\limits_{r=1}^\infty E^r = E$ und $\alpha\times\beta(E) = \alpha\times\beta(D)$. Da $D$ messbar ist, gilt $\alpha\times\beta(E\setminus D) = \alpha\times\beta (E) - \alpha\times\beta(D) = 0$. 
+   	\end{itemize} 
+   	\item[]\underline{Wir wollen 3 Aussagen zeigen}
+   	\begin{itemize}
+   		\item[1)] $E_y = \{x\in X: (x,y)\in E \}$ ist $\alpha$-messbar $\forall y\in Y$
+   		\item[2)] $f_k: Y \to [0,\infty]$, $y \mapsto \alpha(E_y)$ $\beta$-messbar
+   		\item[3)] $\gamma (?) (E) := \int\limits_Y f_k d\beta = \alpha\times\beta (E)$
+   	\end{itemize}
+   Sei $\epsilon$ das System aller $\alpha\times\beta$-messbaren Mengen, welche 1), 2) und 3) erfüllen. Für Produktmenten $A\times B$ gilt: \\
+   $(A\times B)_y = A$ falls $y=B$ und $(A\times B)_y = \varnothing$, falls $y\notin B$ $\implies A\times B \in \epsilon$, denn $f_{A\times B} = \alpha (A)\psi_B$ und $\gamma(A\times B) = \alpha(A) \beta(B) = \alpha\times\beta(A\times B)$. \\
+   Jetzt betrachte disjunkte Vereinigung $E = \bigcup\limits_{i=1}^\infty E_i$ mit $E_i \in \epsilon$ $\forall i\in \mathbb{N}$. \\
+   $\implies E_y = \bigcup\limits_{i=1}^\infty (E_i)_y$ $\alpha$-messbar \\
+   $f_E = \sum\limits_{i=1}f_{E_i}$ ist $\beta$-messbar und \\
+   $\gamma(E) = \int\limits_Y \sum\limits_{i=1}^\infty f_{E_i} d\beta \overset{\text{Satz von der Mon. Konv.}}{=} \sum\limits_{i=1}^\infty \int\limits_Y f_{E_i} d\beta = \sum\limits_{i=1}^\infty \alpha\times\beta(E_i) = \alpha\times\beta(E)$ \\
+   Schließlich sei $E^1 \supset E^2 \supset ...$ mit $E^r \in \epsilon$ und $\alpha\times\beta(E^1) < \infty$. \\
+   Für $E = \bigcap\limits_{r=1}^\infty E^r$ ist $E_y = \bigcap_{r=1}^\infty (E^r)_y$ $\alpha$-messbar $\forall y\in Y$. Lemma II.8 impliziert \\
+   $f_E(y) = \alpha (E_y) = \lim\limits_{r\to\infty} \alpha((E^r)_y) = \lim\limits_{r\to\infty} f_{E^r}(y)$ für $\beta$-fast alle $y\in Y$. \\
+   $\implies f_E$ ist $\beta$-messbar. \\
+   Zuletzt folgt aus Satz von Lebesgue wegen $f_{E^r} \leq f_{E^1}$ \\
+   $\gamma(E) = \int\limits_Y f_E d\beta = \lim\limits_{r\to\infty} \int\limits_Y f_{E^r} d\beta = \lim\limits_{r\to\infty}\alpha\times\beta(E^r) = \alpha\times\beta(E)$ \\
+   $\implies$ Für $E$ wie oben gelten somit die Aussagen 1), 2), und 3). \\
+   Jetzt wende das Argument auf eine $\alpha\times\beta$ Nullmenge $N$ statt $D$ an. Erhalte $C\supset N$ mit $C\in\epsilon$ und $\alpha\times\beta(C) = 0$. Also \\
+   $0 = \alpha\times\beta(C) = \int\limits_Y \alpha(C_y)d\beta(y) \implies \alpha(N_y) \leq \alpha(C_y) = 0$ für fast alle $y\in Y$. \\
+   Wähle $N=E\setminus D$. Dann folgt für $\beta$-fast alle $y\in Y$: \\
+   $D_y = E_y \setminus N_y$ ist $\alpha$-messbar und es gilt: $f_D(y) = f_E(y)$ ($\implies f_D$ ist $\beta$-messbar)\\
+   $\int\limits_Y f_D d\beta = \int\limits_Y f_E d\beta = \alpha\times\beta(E) = \alpha\times\beta(D)$. 
+   \item[II] Sei $D\subset X\times Y$ nur messbar.\\
+   Nach Vor. gilt $X=\bigcup\limits_{n=1}^\infty A_n$, $Y=\bigcup\limits_{n=1}^\infty B_n$ mit $A_n$, $B_n$ messbar und $\alpha(A_n)$, $\beta(B_n) < \infty$. \\
+   O.E. $A_n$, $B_n$ aufsteigend. $D_n = D\cap (A_n\times B_n)$ ist $\alpha\times\beta$-messbar mit $(\alpha\times\beta)(D_n) < \infty$ \\
+   $\overset{\text{I}}{\implies}$ Dann ist $D_y = \bigcup\limits_{n=1}^\infty (D_n)_y$ $\alpha$-messbar für $\beta$-fast alle y. Es gilt $f_{D_1} \leq f_{D_2} \leq ...$ und $f_D(y) = \alpha(D_y) = \lim\limits_{n\to\infty}(\alpha(D_n)_y) = \lim\limits_{n\to\infty}f_{D_n}(y) \\
+   \implies f_D$ $\beta$-messbar und $\int\limits_Y f_D d\beta \overset{\text{mon.konv.}}{=} \lim\limits_{n\to\infty}\int\limits_Y f_{D_n}d\beta = \lim\limits_{n\to\infty} \alpha\times\beta(D_n) = \alpha\times\beta(D)$
   \end{proof}
 
   \begin{remark}
@@ -97,14 +133,26 @@
     Mit $I_k = [\frac{k-1}{n}, \frac{k}{n}]$ gilt $D = \bigcap\limits_{n=1}^{\infty}( \bigcup\limits_{k=1}^{\infty} I_k \times I_k) \implies D$ ist messbar bzgl. $\lambda^1 \times card$
   \end{example}
 
-  \newpage
   \begin{lemma}
     Es gilt $\lambda^n = \lambda^k \times \lambda^m$ für $k + m = n$
   \end{lemma}
-  \begin{proof}
-    siehe Aufschrieb
-  \end{proof}
 
+  \begin{proof}
+    Quader im $\mathbb{R}^n$ sind Produkte $P\times Q$ von Quadern im $\mathbb{R}^k$ und $\mathbb{R}^m$ und es gilt $vol^n(P\times Q) = vol^k(P)vol^m(Q)$. Somit ist $\lambda^n(E) = \inf \{\sum\limits_{j=1}^\infty vol^k(P_j)vol^m(Q_j):$ $ P_j, Q_j$ Quader, $E\subset \bigcup\limits_{j=1}^\infty P_j\times Q_j \}$ \\
+    Es folgt direkt $\lambda^k \times \lambda^m \leq \lambda^n$. \\
+    \item[\underline{z.z}] $\lambda^n \leq \lambda^k\times\lambda^m$ \\
+    Reicht dies für Produktmengen zu zeigen, d.h. $\lambda^n(A\times B) \leq \lambda^k(A) \lambda^m(B)$, denn daraus folgt für $E\subset \mathbb{R}^n$ bel.: 
+    $$ \lambda^n(E) \leq \inf\{\sum\limits_{j=1}^\infty \lambda^n(A_j\times B_j): A_j, B_j \text{ messbar }, E\subset \bigcup\limits_{j=1}^n A_j\times B_j \} \leq (\lambda^k\times\lambda^m)(E)$$ 
+    Betrachte nun $A\times B$ mit $\lambda^k(A)$, $\lambda^m(B) <\infty$. Zu $\epsilon >0$ existiert Quader $P_i$, $Q_i$ mit $A\subset \bigcup\limits_{i=1}^\infty P_i$, $B\subset \bigcup\limits_{j=1}^\infty Q_j$, sodass $\sum\limits_{i=1}^\infty vol^k(P_i) < \lambda^k(A)+\epsilon$, $\sum\limits_{j=1}^\infty vol^m(Q_j) < \lambda^m(B)+\epsilon$. \\
+    $\implies A\times B \subset \bigcup\limits_{i,j=1}^\infty (P_i\times Q_j) \\
+    \implies \lambda^n(A\times B) \leq \sum\limits_{i,j=1}^\infty vol^k(P_i) vol^m(Q_j) < (\lambda^k(A) + \epsilon) (\lambda^m(B) + \epsilon) \overset{\epsilon\to 0}{\to} \lambda^k(A)\lambda^m(B)$. \\
+    Für $\lambda^k(A)\lambda^m(B) = \infty$ ist nichts zu zeigen. \\
+    Bleibt der Fall $\lambda^k(A) = \infty$, $\lambda^m(B) = 0$ (oder umgekehrt).\\
+    Mit $A_l = \{x\in A:$ $l-1\leq ||x|| \leq l \}$ folgt \\
+    $$\lambda^n(A\times B) \leq \sum\limits_{l=1}^\infty \lambda^n(A_l\times B) \leq \sum\limits_{l=1}^\infty \lambda^k(A_l)\lambda^m(B) = 0$$
+  \end{proof}
+  \newpage 
+  
   \sidenote{Vorlesung 18}{15.01.21}
   \begin{example}
     \begin{enumerate}
@@ -149,7 +197,38 @@
   \end{theorem}
 
   \begin{proof}
-    siehe Aufschrieb
+    Für $f = \psi_E$ mit $E\subset X\times Y$ $\sigma$-endlich gelten 1)-3) nach Satz VI.4
+    \begin{itemize}
+    	\item[$\cdot$] Für $\beta$-fast alle $y\in Y$ ist $f(\cdot, y) = \psi_{E_y}$ $\alpha$-messbar mit $\int\limits_X f(x,y) d\alpha(x) = \alpha(E_y)$
+    	\item[$\cdot$] $y \mapsto \alpha(E_y)$ ist $\beta$-messbar mit $\int\limits_Y \alpha(E_y) d\beta(y)$ 
+    	\item[$\cdot$] $\int\limits_{X\times Y} f d(\alpha\times\beta) = (\alpha\times\beta)(E) = \int\limits_Y \alpha(E_y)d\beta(y) = \int\limits_Y \int\limits_X f(x,y) d\alpha(x) d\beta(y)$
+    \end{itemize}
+	Sei jetzt $f\leq 0$. Satz IV.9 $\implies \exists \alpha\times\beta$-Treppenfunktion $0 \leq f_1 \leq f_2 \leq ...$ mit $f_k(x,y) \to f(x,y)$ auf $X\times Y$. Die $f_k$ sind ebenfalls $\sigma$-endlich, und es gilt: 
+	\begin{itemize}
+		\item[$\cdot$] $f(\cdot, y)$ ist monotoner Grenzwert der $f_k(\cdot, y)$. Für $\beta$-fast alle $y\in Y$ ist damit $f(\cdot, y)$ $\alpha$-messbar und $\int\limits_X f(\cdot, y)d\alpha = \lim\limits_{k\to\infty} \int\limits_x f_k(\cdot, y) d\alpha$ (Satz IV.10)
+		\item[$\cdot$] $y \mapsto \int\limits_X f(\cdot, y) d\alpha$ ist monotoner Grenzwert von $y\mapsto \int\limits_X f_k(\cdot, y) d\alpha$ für $\beta$-fast alle $y\in Y$\\ $\implies y\mapsto \int\limits_X f(\cdot, y) d\alpha$ ist $\beta$-messbar und $\int\limits_Y \int\limits_X f(x,y)d\alpha(x) d\beta(x) = \lim\limits_{k\to\infty}\int\limits_Y \int\limits_X f_k(x,y) d\alpha(x) d\beta(y)$
+		\item[$\cdot$] $\int\limits_{X\times Y} f d(\alpha\times\beta) = \lim\limits_{k\to\infty}\int\limits_{X\times Y} f_k d(\alpha\times\beta) = \lim\limits_{k\to\infty}\int\limits_Y\int\limits_X f_k (x,y) d\alpha(x) d\beta(y) = \int\limits_Y \int\limits_X f(x,y) d\alpha(x) d\beta(y) $
+	\end{itemize}
+	$\implies$ Fubini für $f\geq 0$ \\
+	Sei $f$ nun $\sigma$-endlich und $\int f^- d(\alpha\times\beta) < \infty$. \\
+	$\implies f^\pm$ sind auch $\sigma$-endlich und $\int\limits_Y \int\limits_X f^-(x,y) d\alpha(x) d\beta(y) = \int\limits-{X\times Y} f^- d(\alpha\times\beta) y\infty$ \\
+	$\implies$ Für $\beta$-fast alle $y\in Y$ gilt $\int\limits_X f^-(x,y) d\alpha(x) < \infty$ und $f^-(x,y) < \infty$ für $\alpha$-fast alle $x\in X$. 
+	\begin{itemize}
+		\item[$\cdot$] Für $\beta$-fast alle $y\in Y$ ist $f(\cdot, y) = f^+(\cdot, y) - f^-(\cdot, y)$ $\alpha$-messbar, mit Integral $\int\limits_X f(\cdot, y) d\alpha = \int\limits_X f^+(\cdot,y)d\alpha - \int\limits_X f^-(\cdot,y)d\alpha$
+		\item[$\cdot$] $y\mapsto \int\limits_X f(\cdot,y) d\alpha$ ist Differenz zweier messbarer Funktionen, also messbar und ihr Integral existiert, denn $s\mapsto s^-$ fallend, gilt \\
+		$\int\limits_Y \left(\int\limits_X f(x,y) d\alpha(x) \right)^- d\beta(y) \leq \int\limits_Y \left(-\int\limits_X f^-(x,y) d\alpha(x) \right)^- d\beta(y) \\= \int\limits_Y \int\limits_X f^-(x,y) d\alpha(x) d\beta(y) < \infty$
+		\item[$\cdot$] \begin{equation*}
+			\begin{split}
+				\int\limits_{X\times Y} f d(\alpha\times\beta) &= \int\limits_{X\times Y} f^+ d(\alpha\times\beta) - \int\limits_{X\times Y} f^- d(\alpha\times\beta) \\
+				&= \int\limits_Y \int\limits_X f^+(x,y) d\alpha(x) d\beta(y) - \int\limits_Y \int\limits_X f^-(x,y) d\alpha(x) d\beta(y) \\
+				&= \int\limits_Y \int\limits_X \left( f^+(x,y) -f^-(x,y)\right) d\alpha(x) d\beta(y) \\
+				&= \int\limits_Y \int\limits_X f(x,y) d\alpha(x) d\beta(y)
+			\end{split}
+		\end{equation*}
+		$\implies$ Beh.
+	\end{itemize}
+	Zusatz: Folgt durch Anwendung auf $|f|$, dann gilt: $$ \int\limits_{X\times Y} |f| d(\alpha\times\beta) = \int\limits_Y \int\limits_X |f(x,y)|d\alpha(x) d\beta(y) < \infty$$
+	$\implies$ Integral von $f$ bzgl $\alpha\times\beta$ ist definiert.
   \end{proof}
 
   \begin{example}
@@ -186,7 +265,19 @@
     $$\int\limits_{\Omega}(\partial_j f)g dx = -\int\limits_{\Omega} f (\partial_j g) dx \ \ \ \ \forall \ 1 \leq j \leq n \ (dx \ \hat{=} \ d \lambda^n)$$
   \end{theorem}
   \begin{proof}
-    siehe Aufschrieb
+    Es reicht die Aussage $(\ast)$ zu zeigen: 
+    \begin{align*}
+    	(\ast) && \int\limits_{\mathbb{R}^n} \partial_j f dx = 0 \text{   } \forall f\in C_c^1 (\mathbb{R}^n)
+    \end{align*}
+	Denn setzen wir $fg$ durch $0$ zu einer Funktion $\phi \in C^1_c(\mathbb{R}^n)$ fort, so folgt $$ 0 = \int\limits_{\mathbb{R}^n} \partial_j \phi dx = \int\limits_\Omega \partial_j (fg) dx = \int\limits_\Omega (\partial_j f) g dx + \int\limits_\Omega f \partial_j g dx$$
+	Fubini für $f\in C^1_c(\mathbb{R}^n)$ liefert mit $x = (x', x_n)\in \mathbb{R}^{n-1}\times \mathbb{R}$ 
+	\begin{equation*}
+		\begin{split}
+			\int\limits_{\mathbb{R}^n} \partial_j f(x) dx &= \int\limits_{\mathbb{R}} \int\limits_{\mathbb{R}^{n-1}} \partial_j f(x',x_n) dx' dx_n \\
+			&= \int\limits_{\mathbb{R}^{n-1}} \int\limits_{\mathbb{R}} \partial_j f(x',x_n) dx_n dx'
+		\end{split}
+	\end{equation*}
+	Für $j=n$ ist das letzte Integral $0$ nach Hauptsatz. Für $1 \leq j \leq n-1$ verschwindet das mittlere Integral nach Induktion. 
   \end{proof}
 
   \begin{remark}
