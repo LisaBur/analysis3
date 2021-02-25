@@ -60,7 +60,12 @@
     $$A(f, \Phi(E)) = A(f\circ\Phi, E) \ \ \ \forall \ E \subseteq \script{U} \ \lambda^n\text{-messbar}$$
   \end{theorem}
   \begin{proof}
-    siehe Aufschrieb
+    Kettenregel \\
+    $D(f\circ \phi)(x)^T D(f\circ\phi)(x) = D\phi(x)^T Df(\phi(x))^T Df(\phi(x)) D\phi(x)$ \\
+    Determinanten davon ist \\
+    $\det{(D(f\circ\phi)(x)^T D(f\circ\phi)(x))} = |\det{(D\phi(x))}|^2 \det{(Df(\phi(x))^T Df(\phi(x)))} \\
+    \implies J(f\circ\phi)(x) = J f(\phi(x)) |\det{(D\phi(x))}|\\
+    \implies $ Beh. folgt aus Trafo-Formel
   \end{proof}
 
   \begin{definition}[Untermannigfaltigkeiten]
@@ -87,8 +92,18 @@
   \begin{theorem}
     Jede $n$-dimensionale Untermannigfaltigkeit $M \subseteq \mathbb{R}^{n+k}$ ist als abzählbare Vereinigung $M = \bigcup\limits_{i\in\mathbb{N}} K_i$ von kompakten Mengen darstellbar.
   \end{theorem}
+
   \begin{proof}
-    siehe Aufschrieb
+    \item[I] $M\cap \overline{B_r(p)}$ ist kompakt für $p\in M$ und $r>0$ hinreichend klein. Sei dazu $\phi: W\to \phi(W)$ lokalte Plättung mit $p\in W$ \\
+    $\phi: W\to \mathbb{R}^{n+k}$ ist stetig $\implies M\cap W = \phi^{-1}(\mathbb{R}^n\times\{0\})$ ist abgeschlossen in $W$. Für $\overline{B_r(p)}\subset W$ ist damit $M\cap \overline{B_r(p)}$ abgeschlossen, also kompakt. Setze nun für $p\in M$:  
+    $$ r(p) = \sup\{r >0: M\cap \overline{B_r(p)} \text{ ist kompakt } \} \in (0,\infty] $$
+    $\implies M\cap \overline{B_r(p)}$ ist kompakt $\forall r\in r(p)$ \\
+    (Abg. Teilmengen einer kompakten Menge sind kompakt)
+    \item[II] $r(p) \leq \liminf\limits_{i\to\infty}r(p_i)$ für $p,p_i\in M$ mit $p_i \to p$. \\
+    Zu $r < r(p)$ wähle $R\in (r, r(p))$ \\
+    Es gilt: $M\cap \overline{B_r(p)} \subset M\cap \overline{B_R(p)}$ für $i$ groß $\implies r(p_i) \geq r(p)$. \\
+    Für $P\subset M$ dicht ist damit $M$ Vereinigung der kompakten Teilmengen \\ $M = \bigcup\limits_{p\in P} M\cap \overline{B_{\frac{r(p)}{2}}(p)}$ \\
+    Betrachte nun $Q_{j,l} = 2^{-l} (j+[0,1]^{n+k})$ für $j\in \mathbb{Z}^{n+k}$, $l\in\mathbb{N}_0$. Wähle in jedem Würfel $Q_{j,l}$, der $M$ trifft, einen Punkt $p_{j,l}\in M$. Die Menge $P$ dieser $p_{j,l}$ ist abzählbar und dicht in $M$. 
   \end{proof}
 
   \begin{definition}
@@ -100,7 +115,10 @@
     $C^1$-Parametrisierungen $f_i:\script{U}_i \to M$, wobei $i\in\mathbb{N}$, sodass $M = \bigcup\limits_{i \in \mathbb{N}} f_i(\script{U}_i)$
   \end{lemma}
   \begin{proof}
-    siehe Aufschrieb
+    $\forall p\in M$ $\exists$ lokale Plättung $\phi: W \to \phi(W)$ mit $p\in W$ \\
+    $\implies \script{U} = \mathbb{R}^n \cap \phi(W)$ ist offen in $\mathbb{R}^n$ und $f = \phi^{-1}|_{\mathbb{R}\cap \phi(W)}$ ist eine lokalte Parametrisierung von $M$ mit $p\in f(\script{U})$ \\
+    Außerdem ist $f(\script{U}) = M\cap W$ offen in $M$. \\
+    $K\subset M$ kompakt wird also durch endlich viele Bild(?) überdeckt. Beh. folgt aus Satz VIII.6
   \end{proof}
 
   \begin{theorem}
@@ -111,7 +129,15 @@
     \end{enumerate}
   \end{theorem}
   \begin{proof}
-    siehe Aufschrieb
+    \item[1)] s. Blatt 11 (Satz VIII.5) \\
+    \item[2)] O.E. $V_1 \cap V_2 \subset W$ für eine Plättung $\phi: W \to \phi(W)$ denn $C^1$-Eigenschaft ist lokal. \\
+    Betrachte $\phi \circ f_i: f_i^{-1}(V_1\cap V_2) \to \phi(V_1\cap V_2)$ $i=1,2$ \\
+    Es gilt: $f_2^{-1} \circ f_1 = (\phi\circ f_2)^{-1} \circ (\phi\circ f_1)$ auf $f_1^{-1}(V_1\cap V_2)$ \\
+    \underline{z.z} $\phi\circ f_i$ ist Diffeo \\
+    $\phi\circ f_i$ ist definiert, injektiv und es gilt $Rang (D(\phi\circ f_i)) (x) = Rang (D\phi(f_i(x)) Df(x)) = n$ $\forall x\in f_i^{-1}(V_1 \cap V_2) \\
+    \overset{\text{Satz von der lokalten Umkehrbarkeit}}{\implies} \phi(V_1 \cap V_2)$ ist offen und $\phi\circ f_i: f_i^{-1}(V_1\cap V_2) \to \phi(V_1 \cap V_2)$ ist Diffeo. \\
+    ($\phi(V_1\cap V_2)\subset \mathbb{R}^n\times \{0\} \subset \mathbb{R}^{n+k}$)
+    
   \end{proof}
 
   \begin{theorem}[Flächenmaß]
@@ -121,14 +147,41 @@
     $$\mu_M(E) = \int\limits_{f^{-1}(E)}Jf(x) \ dx$$
   \end{theorem}
   \begin{proof}
-    siehe Aufschrieb
-  \end{proof}
+    \item[Trivial:] $\varnothing \in M$ \\
+    Für jede lok. Para. $f\script{U} \to M$ gilt: $f^{-1}(M\setminus E) = \script{U}\setminus f^{-1}(E)$ und $f^{-1}(\bigcup\limits_{i=1}^\infty E_i) = \bigcup\limits_{i=1}^\infty f^{-1}(E_i) \\
+    \implies M$ ist $\sigma$-Algebra. \\
+    Mit $V$ offen in $M$ ist $f^{-1}(V)$ offen im $\mathbb{R}^n \implies M$ enthält alle Borelmengen. \\
+    Sei nun $M = \bigcup\limits_{i=1}^\infty M_i$ disjunkte Zerlegung in Mengen $M_i\in M$, sodass $M_i \subset V_i$ für lok. Para. $f_i: \script{U_i}\to f(\script{U_i}) = V_i$ \\
+    Solch eine Zerlegung ex., denn nach lemma VIII.8 $\exists$ lok. para $f_i:\script{U_i} \to f(\script{U_i}) = V_i$ mit $M = \bigcup\limits_{i=1}^\infty V_i$ und wir wählen jetzt die Borelmengen $M_i = V_i \setminus \bigcup\limits_{j=1}^{i-1}V_j$. \\
+    Aus den Eigenschaften folgt für das gesuchte Maß $\mu_M$ und alle $E\in M$ 
+    \begin{align*}
+    	(\ast) && \mu_M(E) = \sum\limits_{i=1}^\infty \mu_M(E\cap M_i) = \sum\limits_{i=1}^\infty \int\limits_{f_i^{-1}(E\cap M_i)} J f_i(x) dx 
+    \end{align*}
+	$\implies$ Eindeutigkeit von $\mu_M$. \\
+	Durch $(\ast)$ wird ein Maß auf $M$ definiert. \\
+	Ist $E = \bigcup\limits_{j=1}^\infty E_j$ mit $E_j$ messbar und paarweise disjunkt so folgt 
+	\begin{align*}
+		\mu_M(E) &= \sum\limits_{i=1}^\infty \int\limits_{f_i^{-1}(M_i\cap E)}Jf_i(x) dx  \\
+		&= \sum\limits_{i,j=1}^\infty \int\limits_{f_i^{-1}(E_j\cap M_i)} Jf_i(x)dx \\
+			&= \sum\limits_{j=1}^\infty \mu_M(E_j)
+	\end{align*}
+	Ist $f:\script{U} \to V = f(\script{U})$ beliebige lokale Para und $E\subset V$ messbar, so ist $\phi_i = f_i^{-1}\circ f: f^{-1}(V\cap V_i) \to f_i^{-1}(V\cap V_i)$ ein $C^1$-Diffeo zw. offenen Mengen nach Satz VIII.9(2). Aus Satz VIII.3 folgt \begin{align*}
+		\mu_M(E) &= \sum\limits_{i=1}^\infty \int\limits_{f_i^{-1}(E\cap M_i)} Jf_i(x) dx \\
+		&= \sum\limits_{i=1}^\infty \int\limits_{\phi_i\circ f^{-1}(E\cap M_i)} Jf_i(x) dx \\
+		&= \sum\limits_{i=1}^\infty \int\limits_{f^{-1}(E\cap M_i)}J(f_i\circ\phi_i)(x) dx \\
+		&= \int\limits_{f^{-1}(E)} Jf(x) dx
+	\end{align*}
 
-  \newpage
+  \end{proof}
+	\newpage
   \begin{theorem}[Oberflächenintegral]
     Sei $M \subseteq \mathbb{R}^{n+k} n$-dimensionale $C^1$-Untermannigfaltigkeit und $M = \bigcup\limits_{i \in \mathbb{N}} M_i$ eine paarweiße disjunkte, messbare Zerlegung mit $M_i \subseteq \script{V}_i$ für lokale Parametrisierungen $f_i: \script{U}_i \to \script{V}_i$. Für eine messbare Funktion $u: M \to \bar{\mathbb{R}}$ gilt:
     $$\int\limits_M u \ d\mu_M = \sum\limits_{i \in \mathbb{N}} \int\limits_{f_i^{-1}(M_i)} u(f_i(x))\ Jf_i(x)\ dx$$
   \end{theorem}
+  \begin{proof}
+  	Aussage gilt nach Satz VIII.10 für $u$ = Charakteristische Funktion\\  $\implies$ gilt auch für messbare Treppenfunktionen. \\
+  	Für $u\geq 0$ folgt Beh. durch Approximation von unten durch Treppenfunktionen (Satz Mon. Konv.) [Auf der rechten Seite benutze zuerst Mon. Konv. für die einzelnen Integrale und dann für die Reihe] \\ Für $u$ integrierbar zerlege $u = u^+ - u^-$
+  \end{proof}
 
   \sidenote{Vorlesung 23}{01.02.2021}
   \begin{lemma}
@@ -141,7 +194,13 @@
     \end{enumerate}
   \end{lemma}
   \begin{proof}
-    siehe Aufschrieb
+    Zu $q\in N$ wähle lokalte Plättung $\phi: W \to \phi(W)$ von $M$ mit $T^{-1}(q) \in W$. Dann ist $\phi \circ T^{-1}: T(W) \to \phi(W)$ eine lokalte Plättung von $N$ $\implies N$ ist $C^1$-Umge. \\
+    Ist $f: \script{U} \to M$ lokale Parametrisierung, so auch $T\circ f: \script{U}\to W$ und umgekehrt. Wegen $(T\circ f)^{-1} (T(A)) = f^{-1}(A)$ ist $A\subset M$ $\mu_M$-messbar $\Leftrightarrow T(A) \subset N$ $\mu_M$-messbar. 
+    \item[1)] O.E. $A\subset f(\script{U})$ (s. Beweis zu Satz VIII.10) für $f: \script{U}\to M$ lokalte Parametriersung. $DT(x) = \lambda Q$ \\
+    $\implies D(T\circ f)(x)^T D(T\circ f)(x) = Df(x)^T DT(f(x))^T DT(f(x))Df(x) = \lambda^n Df(x)^T Df(x)$ \\
+    $\overset{\text{Satz VIII.11}}{\implies} \mu_M (T(A)) = \int\limits_{(T\circ f)^{-1}(T(A))} J(T\circ f)(x) dx = \lambda^n\int\limits_{f^{-1}(A)}Jf(x) dx = \lambda^n \mu_M(A)$ 
+    \item[2)] Für $u = \psi_B$ mit $B\subset N$ $\mu_N$-messbar folgt 2) aus 1).
+    Durch Approximation mit Treppenfunktionen von unten folgt 2) für $u\geq 0$ und für $u$ belibig zerlege $u = u^+ - u^-$
   \end{proof}
 
   \begin{theorem}[Zwiebelformel]
@@ -153,10 +212,19 @@
     \end{align*}
   \end{theorem}
   \begin{proof}
-    siehe Aufschrieb
+    Sei $f: \script{U}\to V\subset S^n$ lok. Para. und $C(V) = \{rw: w\in V, r> 0 \}$ sei der offene Kegel über $V$. \\
+    Betrachte Diffeo $\phi: (0,\infty) \times \script{U} \to C(V)$, $\phi(v,x) = rf(x)$. \\
+    Mit $g_{i,j}(x) = < \frac{\partial f(x)}{\partial x_i}, \frac{\partial f(x)}{\partial x_j}>$ gilt $D\phi (r,x)^T D\phi (r,x) = \begin{pmatrix} 1 & 0 \\ 0 & r^2 g(x) \end{pmatrix} \in \mathbb{R}^{n+1}\times \mathbb{R}^{n+1}$ \\
+    Ist $E = f(A)$ für $\lambda^n$-messbares $A\subset \script{U}$ und $C(E)$ der Kegel über $E$, so folgt 
+    \begin{align*}
+    	\int\limits_{C(E)} u(p) d\lambda^{n+1}(p) &= \int\limits_{(0,\infty)\times A} u(rf(x)) r^n \sqrt{det{(g(x))}} d\lambda^{n+1}(r,x) \\
+    	&= \int\limits_0^\infty r^n \int\limits_A u(rf(x)) \sqrt{\det{(g(x))}} d\lambda^n(x) d\lambda^1(r) \\
+    	&= \int\limits_0^\infty r^n \int\limits_E u(rw) d\mu_{S^n}(w) d\lambda^1(r) \\
+    	&= \int\limits_0^\infty \int\limits_{\{rw: w\in E\} } u(p) d\mu_{\partial B_r(0)}(p) d\lambda^1(r)
+    \end{align*}
+	Wähle nun disjunkte Zerlegung $S^n = \bigcup\limits_{j=1}^N E_j$ mit $E_j \subset V_j$, wobei $f_j: \script{U_j}\to V_j$ lok. Para. ist. Durch Addition folgt Beh. 
   \end{proof}
 
-  \newpage
   \begin{example}
     Mit $u = \psi_{B_1(0)}$ folgt für $w_n = \mu_{S^n}(S^n)$:
     $$\alpha_{n+1} = \lambda^{n+1}(B_1(0)) = \int\limits_0^1 \mu_{\partial B_r(0)} (\partial B_r(0)) \ dr = \int\limits_0^1 w_n r^n \ dr = \frac{w_n}{n+1}$$

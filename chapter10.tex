@@ -1,0 +1,117 @@
+\chapter{Faltung und Fouriertransformation}
+\begin{theorem}
+	Sei $f\in L^p(\mathbb{R}^n)$, $1\leq p \leq \infty$ und $g\in L^1(\mathbb{R}^n)$. \\
+	Die Faltung von $f$ mit $g$ ist die $\lambda^n$-fast überall definierte Funktion 
+	$$ f\ast g: \mathbb{R}^n \to \mathbb{\bar{R}}\text{, } (f\ast g)(x) = \int\limits_{\mathbb{R}^n} f(x-y) g(y) dy $$
+	Es gilt $f\ast g\in L^p(\mathbb{R}^n)$ mit $||f\ast g||_{L^p} \leq ||f||_{L^p} ||g||_{L^1}$
+\end{theorem}
+\begin{proof}
+Aufschrieb
+\end{proof}
+
+\begin{lemma}
+	$f\in L^p(\mathbb{R}^n)$ mit $1\leq p \leq \infty$ und $\tau_h: \mathbb{R}^n\to \mathbb{R}^n$, $\tau_h(x)=x+h$. Dann gelten:
+	\item[i)] $f\circ \tau_h \in L^p(\mathbb{R}^n)$ mit $||f\circ \tau_h ||_{L^p} = ||f||_{L^p}$
+	\item[ii)] $f\circ \tau_h \to f$ in $L^p(\mathbb{R}^n)$ für $h\to 0$, falls $1\leq p < \infty$
+\end{lemma}
+\begin{proof}
+	\item[i)] Trivial
+	\item[ii)] s. Blatt 9, Aufgabe 1
+\end{proof}
+
+\begin{theorem}
+	$f\in L^p(\mathbb{R}^n)$ mit $ 1\leq p \leq \infty$. Ist $\eta \in L^1(\mathbb{R}^n)$ mist $\int\limits_{\mathbb{R}^n} \eta(z) dz = 1$, so folgt $\eta_\rho (x) = \rho^{-n} \eta(\frac{x}{\rho})$: 
+	\begin{equation*}
+		||f\ast \eta_\rho||_{L^p} \leq ||f||_{L^p} ||\eta||_{L^1} \\
+		\text{ und } \\
+		f\ast \eta_\rho \to f \text{ in } L^p(\mathbb{R}^n) \text{ für } \rho \to 0
+	\end{equation*}
+\end{theorem}
+
+\begin{proof}
+	siehe Aufschrieb
+\end{proof}
+
+\begin{theorem}
+	Sei $\eta \in C^k(\mathbb{R}^n)$ mit $|| D^\alpha \eta ||_{C^0(\mathbb{R}^n)} \leq C_k$ für $|\alpha| \leq k$ $(\alpha = (\alpha_1, ..., \alpha_n), |\alpha| = \alpha_1+...+\alpha_n, D^\alpha = \partial_1^{\alpha_1}\cdot ... \cdot \partial_n^{\alpha_n})$. Für $f \in L^1(\mathbb{R}^n)$ ist dann $f\ast \eta \in C^k(\mathbb{R}^n)$ und es gilt $D^\alpha (f\ast \eta) = f\ast (D^\alpha \eta)$, speziell $||D^\alpha(f\ast \eta)||_{C^0(\mathbb{R}^n)} \leq C_k ||f||_{L^1}$
+\end{theorem}
+\begin{proof}
+	siehe Aufschrieb
+\end{proof}
+
+\begin{theorem}
+	$\Omega \subset\mathbb{R}^n$ offen und $1\leq p < \infty$. Dann ex. zu $f\in L^p(\Omega)$ eine Folge $f_k \in C^\infty_C(\Omega)$ mit $||f-f_k||_{L^p}\to 0$ mit $k \to \infty$. 
+\end{theorem}
+\begin{proof}
+	siehe Aufschrieb
+\end{proof}
+
+\begin{definition}
+	Die Fourier-Transformierte von $f\in L^1(\mathbb{R}^n, \mathbb{C})$ ist die Funktion 
+	$$\hat{f}: \mathbb{R}^n \to \mathbb{C}\text{, } \hat{f}(p) = (2\pi)^{-\frac{n}{2}} \int\limits_{\mathbb{R}^n} f(x) \text{e}^{-i<p,x>}dx$$
+	Die Inverse Fourier-Transformierte von $g\in L^1(\mathbb{R}^n, \mathbb{C})$ ist $$
+	\check{g}:\mathbb{R}^n \to \mathbb{C}\text{, } \check{g}(x) = (2\pi)^{-\frac{n}{2}} \int\limits_{\mathbb{R}^n} g(p) \text{e}^{i<p,x>}dp$$
+\end{definition}
+
+\begin{theorem}
+	Für $f,g\in L^1(\mathbb{R}^n,\mathbb{C})$ gilt:
+	\item[1)] $\hat{f}\in C^0(\mathbb{R}^n,\mathbb{C})$ und $||\hat{f}||_{C^0(\mathbb{R}^n)} \leq (2\pi)^{-\frac{n}{2}}||f||_{L^1}$
+	\item[2)] $\widehat{f\ast g} = (2\pi)^{\frac{n}{2}}\hat{f}\hat{g}$
+	\item[3)] $<\hat{f},g>_{L^2(\mathbb{R}^n)} = < f,\check{g}>_{L^2(\mathbb{R}^n)}$
+\end{theorem}
+\begin{proof}
+	siehe Aufschrieb 
+\end{proof}
+
+\begin{example}
+	siehe Aufschrieb
+\end{example}
+
+\begin{theorem}[Plancherel]
+	Für $f\in (L^1\cap L^2)(\mathbb{R}^n,\mathbb{C})$ gilt $||\hat{f}||_{L^2} = ||\check{f}||_{L^2} = ||f||_{L^2}$
+\end{theorem}
+
+\begin{proof}
+	siehe Aufschrieb
+\end{proof}
+
+\begin{theorem}
+	Es gibt eine eindeutig bestimmte Abb. $\script{F}, \script{F}^\ast: L^2(\mathbb{R}^n,\mathbb{C}) \to L^2(\mathbb{R}^n,\mathbb{C})$ mit
+	\item[1] $\script{F}f = \hat{f}$, $\script{F}^\ast f = \check{f}$ $\forall f\in (L^1\cap L^2)(\mathbb{R}^n,\mathbb{C})$
+	\item[2] $||\script{F}f||_{L^2} = ||f||_{L^2} = ||\script{F}^\ast f||_{L^2}$ $\forall f\in L^2(\mathbb{R}^n,\mathbb{C})$ 
+	Weiter gelten für $f,g\in L^2(\mathbb{R}^n,\mathbb{C})$ 
+	\item[3] $<\script{F}f,\script{F}g>_{L^2} = <f,g>_{L^2} = <\script{F}^\ast f, \script{F}^\ast g>_{L^2}$
+	\item[4] $<\script{F}f,g> _{L^2} = <f,\script{F}^\ast g>_{L^2}$
+	\item[5] $\script{F}^\ast \script{F} = \script{F} \script{F}^\ast = \text{Id}_{L^2(\mathbb{R}^n)}$
+\end{theorem}
+\begin{proof}
+	siehe Aufschrieb
+\end{proof}
+
+\begin{notation} 
+	$\script{F}f = \hat{f}$, $\script{F}^\ast f = \check{f}$ auch wenn $f,g$ nur in $L^2$
+\end{notation}
+
+\begin{definition}[Schwartz-Raum]
+	$S(\mathbb{R}^n,\mathbb{C}) = \{f\in C^\infty (\mathbb{R}^n,\mathbb{C}): x^\alpha D^\beta f$ ist beschränkt für alle $\alpha,\beta \in \mathbb{N}^n_0 \}$ \\
+	$(x^\alpha = x_1^{\alpha_1}... x_n^{\alpha_n}), D^\beta = \partial_1^{\beta_1}...\partial_n^{\beta_n}$
+\end{definition}
+
+\begin{remark}
+	$f\in S(\mathbb{R}^n,\mathbb{C}) \implies |f(x)| \leq c_N (1+||x||^2)^{-\frac{N}{2}}$ $\forall N\in \mathbb{N}$ \\
+	$\implies f\in L^p(\mathbb{R}^n,\mathbb{C})$ $\forall p\in [1,\infty]$ \\
+	Außerdem: $f\in S(\mathbb{R}^n,\mathbb{C}) \implies \partial_j f$ und $x_jf \in S(\mathbb{R}^n,\mathbb{C})$ $\forall 1\leq j \leq n$
+\end{remark}
+
+\begin{theorem}
+	Mit $f$ ist auch $\hat{f}\in S(\mathbb{R}^n,\mathbb{C})$ und 
+	\item[1)] $\widehat{\partial_j f}(p) = i p_j \hat{f}(p)$ sowie $\widehat{x_j f}(p) = i \partial_j \hat{f}(p)$
+	\item[2)] $f(x) = (2\pi)^{-\frac{n}{2}}\int\limits_{\mathbb{R}^n} \hat{f}(p) \text{e}^{i<p,x>}dp$ $\forall x\in \mathbb{R}^n$
+\end{theorem}
+\begin{proof}
+	siehe Aufschrieb
+\end{proof}
+
+\begin{example}
+	siehe Aufschrieb
+\end{example}
